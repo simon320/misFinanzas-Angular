@@ -7,18 +7,9 @@ const routes: Routes = [
   {
     path: '',
     children: [
-      {
-        path: 'admission',
-        component: AdmissionComponent
-      },
-      {
-        path: 'home',
-        component: HomeComponent
-      },
-      {
-        path: '**',
-        redirectTo: '404'
-      }
+      { path: 'admission', component: AdmissionComponent },
+      { path: 'home', component: HomeComponent },
+      { path: '**', redirectTo: '404' }
     ]
   }
 ];

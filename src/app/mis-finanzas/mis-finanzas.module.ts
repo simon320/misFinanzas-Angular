@@ -4,6 +4,7 @@ import { CommonModule } from '@angular/common';
 import { MisFinanzasRoutingModule } from './mis-finanzas-routing.module';
 import { AdmissionComponent } from './pages/admission/admission.component';
 import { HomeComponent } from './pages/home/home.component';
+import { SharedModule } from '../shared/shared.module';
 
 
 @NgModule({
@@ -13,7 +14,8 @@ import { HomeComponent } from './pages/home/home.component';
   ],
   imports: [
     CommonModule,
-    MisFinanzasRoutingModule
+    MisFinanzasRoutingModule,
+    SharedModule
   ]
 })
 export class MisFinanzasModule { }

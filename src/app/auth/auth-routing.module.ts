@@ -8,18 +8,9 @@ const routes: Routes = [
   {
     path: '',
     children: [
-      {
-        path: 'login',
-        component: LoginComponent
-      },
-      {
-        path: 'register',
-        component: RegisterComponent
-      },
-      {
-        path: '**',
-        redirectTo: '404'
-      }
+      { path: 'login', component: LoginComponent },
+      { path: 'register', component: RegisterComponent },
+      { path: '**', redirectTo: '404' }
     ]
   }
 ];
