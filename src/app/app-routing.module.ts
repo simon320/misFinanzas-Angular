@@ -13,6 +13,10 @@ const routes: Routes = [
     loadChildren: () => import('./auth/auth.module').then( m => m.AuthModule)
   },
   {
+    path: 'misfinanzas',
+    loadChildren: () => import('./mis-finanzas/mis-finanzas.module').then( m => m.MisFinanzasModule)
+  },
+  {
     path: '404',
     component: ErrorPageComponent
   },

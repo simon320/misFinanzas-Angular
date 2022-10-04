@@ -4,7 +4,7 @@ section {
     height: 100vh;
 }
 
-.register__container {
+.admission__container {
     height: 100vh;
     display: flex;
     flex-direction: column;
@@ -16,10 +16,17 @@ h1 {
     font-size: 2.8rem;
 }
 
+p {
+    padding: 1.4rem;
+    font-size: 1.1rem;
+    color: var(--light-green);
+    text-align: justify;
+}
+
 .form__container {
     display: flex;
     flex-direction: column;
-    justify-content: space-between;
+    justify-content: space-around;
     align-items: center;
     margin: auto;
     max-width: 350px;
@@ -28,13 +35,11 @@ h1 {
     .input__container {
         display: flex;
         flex-direction: column;
-        gap: 2rem;
     }
 
     .button__container {
         display: flex;
         flex-direction: column;
-        gap: 1.2rem;
     }
 }
 
@@ -51,14 +56,6 @@ button {
     height: 50px;
     font-weight: 700;
     font-size: 1.2rem;
-    
-
-    background: var(--dark-blue);
-    color: var(--light-green);
-
-}
-
-.active {
     background: var(--light-green);
     color: var(--dark-blue);
 }
@@ -70,12 +67,11 @@ input {
     border-bottom: 1px solid var(--light-green);
     background: none;
     color: var(--grey);
-    font-size: 1.3rem;
+    font-size: 23px;
     text-align: center;
 
     &::placeholder {
         color: var(--light-green);
         text-align: center;
     }
-
 }
