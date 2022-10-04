@@ -5,17 +5,37 @@ section {
 }
 
 .login__container {
+    height: 100vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+}
 
+h1 {
+    margin: 3rem;
+    font-size: 2.8rem;
 }
 
 .form__container {
-    margin: auto;
     display: flex;
     flex-direction: column;
     justify-content: space-around;
     align-items: center;
+    margin: auto;
     max-width: 350px;
-    height: 400px;
+    height: 430px;
+
+    .input__container {
+        display: flex;
+        flex-direction: column;
+        gap: 2.5rem;
+    }
+
+    .button__container {
+        display: flex;
+        flex-direction: column;
+        gap: 1.2rem;
+    }
 }
 
 .title {
@@ -26,9 +46,12 @@ section {
 button {
     border-radius: 35px;
     border: 3px solid var(--light-green);
-    padding: 1rem;
+    padding: 0.8rem 1rem;
     width: 275px;
     height: 50px;
+    font-weight: 700;
+    font-size: 1.2rem;
+    
 
     background: var(--dark-blue);
     color: var(--light-green);
@@ -38,4 +61,20 @@ button {
 .active {
     background: var(--light-green);
     color: var(--dark-blue);
+}
+
+input {
+    width: 325px;
+    height: 40px;
+    border: none;
+    border-bottom: 1px solid var(--light-green);
+    background: none;
+    color: var(--grey);
+    font-size: 23px;
+    text-align: center;
+
+    &::placeholder {
+        color: var(--light-green);
+        text-align: center;
+    }
 }
