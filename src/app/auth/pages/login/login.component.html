@@ -1,16 +1,17 @@
 <section>
     <div class="login__container">
-        
+
         <h1 class="title">misFinanzas</h1>
 
         <form class="form__container">
-            <input type="text">
-            <input type="text">
+            <input type="email" placeholder="Ingrese su email" autocomplete="none">
+            <input type="password" placeholder="Ingrese su contraseña">
 
-            <button class="active">LOGIN</button>
-            <button>CREAR CUENTA</button>
+            <div class="buttons__container">
+              <button routerLink="/auth/first-admission" class="active">LOGIN</button>
+              <button routerLink="/auth/register">CREAR CUENTA</button>
+            </div>
         </form>
-
 
     </div>
 </section>
