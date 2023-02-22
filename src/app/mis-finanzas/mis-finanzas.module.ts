@@ -10,7 +10,7 @@ import { SharedModule } from '../shared/shared.module';
 @NgModule({
   declarations: [
     AdmissionComponent,
-    HomeComponent
+    HomeComponent,
   ],
   imports: [
     CommonModule,

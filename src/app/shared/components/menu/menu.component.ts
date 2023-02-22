@@ -6,10 +6,11 @@ import { Component, ViewChild, ElementRef, Renderer2 } from '@angular/core';
   styleUrls: ['./menu.component.scss']
 })
 export class MenuComponent {
-
-  userImg: string = '/src/assets/Img-Perfil.png';
-
   @ViewChild('menuNav') menuNav!: ElementRef;
+
+  userImg: string = '../../../assets/img-perfil.png';
+  useName: string = 'Simón Juarez';
+
 
   constructor( private render: Renderer2) {}
 

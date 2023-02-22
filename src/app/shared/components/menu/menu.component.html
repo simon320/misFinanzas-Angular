@@ -1,16 +1,18 @@
-
+<!-- Icono para abrir el side-menu -->
 <div (click)="openMenu()" class="menu-icon__container">
     <svg id="Menu_Icon" data-name="Menu Icon" xmlns="http://www.w3.org/2000/svg" width="29" height="30" viewBox="0 0 29 30">
         <circle id="Elipse_4" data-name="Elipse 4" cx="5.5" cy="5.5" r="5.5" transform="translate(18)" fill="#01c38d"/>
         <circle id="Elipse_5" data-name="Elipse 5" cx="5.5" cy="5.5" r="5.5" transform="translate(18 19)" fill="#01c38d"/>
         <circle id="Elipse_6" data-name="Elipse 6" cx="5.5" cy="5.5" r="5.5" transform="translate(0 19)" fill="#01c38d"/>
         <circle id="Elipse_7" data-name="Elipse 7" cx="5.5" cy="5.5" r="5.5" fill="#01c38d"/>
-    </svg> 
+    </svg>
 </div>
 
-    
+
+<!-- Contenido del side-menu -->
 <div #menuNav class="menu__container--nav">
 
+    <!-- Icono para cerrar el side-menu -->
     <svg (click)="closeMenu()" class="menu__btn-close" xmlns="http://www.w3.org/2000/svg" width="33.071" height="33.071" viewBox="0 0 33.071 33.071">
         <g id="Componente_39_3" data-name="Componente 39 – 3" transform="translate(3.536 3.536)">
             <line id="Línea_48" data-name="Línea 48" y1="26" x2="26" fill="none" stroke="#aeb1b7" stroke-linecap="round" stroke-width="5"/>
@@ -19,79 +21,112 @@
     </svg>
 
     <div class="img__container">
-        <img [src]="userImg" alt="">
+        <img [src]="userImg" alt="Imagen de perfil">
+        <h3 class="title-name">{{ useName }}</h3>
     </div>
+
 
     <h3 class="title">Secciones</h3>
 
     <hr class="line">
 
     <div class="links__container">
-        <div class="link__container">
-            <svg id="Icon_Calendar" data-name="Icon Calendar" xmlns="http://www.w3.org/2000/svg" width="33" height="28" viewBox="0 0 33 28">
-                <g id="Rectángulo_42" data-name="Rectángulo 42" fill="#35475f" stroke="#01c38d" stroke-width="1">
-                <rect width="33" height="28" rx="3" stroke="none"/>
-                <rect x="0.5" y="0.5" width="32" height="27" rx="2.5" fill="none"/>
-                </g>
-                <line id="Línea_50" data-name="Línea 50" x2="32" transform="translate(0.5 6.5)" fill="none" stroke="#01c38d" stroke-width="1"/>
-                <line id="Línea_51" data-name="Línea 51" x2="3" transform="translate(6 10.5)" fill="none" stroke="#01c38d" stroke-linecap="round" stroke-width="1"/>
-                <line id="Línea_52" data-name="Línea 52" x2="3" transform="translate(12 10.5)" fill="none" stroke="#01c38d" stroke-linecap="round" stroke-width="1"/>
-                <line id="Línea_53" data-name="Línea 53" x2="3" transform="translate(18 10.5)" fill="none" stroke="#01c38d" stroke-linecap="round" stroke-width="1"/>
-                <line id="Línea_54" data-name="Línea 54" x2="3" transform="translate(24 10.5)" fill="none" stroke="#01c38d" stroke-linecap="round" stroke-width="1"/>
-                <line id="Línea_55" data-name="Línea 55" x2="3" transform="translate(6 14.5)" fill="none" stroke="#01c38d" stroke-linecap="round" stroke-width="1"/>
-                <line id="Línea_56" data-name="Línea 56" x2="3" transform="translate(12 14.5)" fill="none" stroke="#01c38d" stroke-linecap="round" stroke-width="1"/>
-                <line id="Línea_57" data-name="Línea 57" x2="3" transform="translate(18 14.5)" fill="none" stroke="#01c38d" stroke-linecap="round" stroke-width="1"/>
-                <line id="Línea_58" data-name="Línea 58" x2="3" transform="translate(24 14.5)" fill="none" stroke="#01c38d" stroke-linecap="round" stroke-width="1"/>
-                <line id="Línea_59" data-name="Línea 59" x2="3" transform="translate(6 18.5)" fill="none" stroke="#01c38d" stroke-linecap="round" stroke-width="1"/>
-                <line id="Línea_60" data-name="Línea 60" x2="3" transform="translate(12 18.5)" fill="none" stroke="#01c38d" stroke-linecap="round" stroke-width="1"/>
-                <line id="Línea_61" data-name="Línea 61" x2="3" transform="translate(18 18.5)" fill="none" stroke="#01c38d" stroke-linecap="round" stroke-width="1"/>
-                <line id="Línea_62" data-name="Línea 62" x2="3" transform="translate(24 18.5)" fill="none" stroke="#01c38d" stroke-linecap="round" stroke-width="1"/>
-                <line id="Línea_63" data-name="Línea 63" x2="3" transform="translate(6 22.5)" fill="none" stroke="#01c38d" stroke-linecap="round" stroke-width="1"/>
-                <line id="Línea_64" data-name="Línea 64" x2="3" transform="translate(12 22.5)" fill="none" stroke="#01c38d" stroke-linecap="round" stroke-width="1"/>
-                <line id="Línea_65" data-name="Línea 65" x2="3" transform="translate(18 22.5)" fill="none" stroke="#01c38d" stroke-linecap="round" stroke-width="1"/>
-                <line id="Línea_66" data-name="Línea 66" x2="3" transform="translate(24 22.5)" fill="none" stroke="#01c38d" stroke-linecap="round" stroke-width="1"/>
-            </svg>          
-            <a routerLink="./home" (click)="closeMenu()">Calendario</a>
-        </div>
-        <div class="link__container">
-            <svg xmlns="http://www.w3.org/2000/svg" width="28.088" height="32.175" viewBox="0 0 28.088 32.175">
-                <g id="Icon_Safe" data-name="Icon Safe" transform="translate(0.505 0.599)">
-                <path id="Trazado_37" data-name="Trazado 37" d="M2556.9,4348.63s-7.426,4.752-8.02,13.96c.594,1.782-.466,1.444,2.644,7.663.406.541,5.408,2.569,8.383,1.082.406-.135,4.056-.676,5.273,0,.541.271,4.6,1.893,7.842,0,.271-.676,4.191-3.245,2.569-9.464-.27-.406-2.974-8.923-6.49-11.763-.676-.406-.946-1.623-3.11-2.7-.271-.406,1.893-3.109,3.11-3.515.406-.271-1.352-3.515-7.031-1.217-1.082.676-4.12-.405-5.169-1.217-.239-.406-4.024,0-2.672,2.434.406.406,2.672,4.741,2.672,4.741" transform="translate(-2548.879 -4341.319)" fill="#35475f" stroke="#01c38d" stroke-width="1"/>
-                <path id="Trazado_38" data-name="Trazado 38" d="M2556.195,4349.162s3.74,1.8,6.769.426l3.266-2.177" transform="translate(-2548.879 -4341.319)" fill="none" stroke="#01c38d" stroke-width="1"/>
-                <path id="Trazado_39" data-name="Trazado 39" d="M2556.526,4348.215s3.219.947,4.4.663l2.567-.611,2.687-1.093" transform="translate(-2548.879 -4341.319)" fill="none" stroke="#01c38d" stroke-width="1"/>
-                <path id="Trazado_40" data-name="Trazado 40" d="M2565.056,4371.25a8.394,8.394,0,0,1-2.913-1.711" transform="translate(-2548.879 -4341.319)" fill="none" stroke="#01c38d" stroke-linecap="round" stroke-width="1"/>
-                <text id="_" data-name="$" transform="translate(8.121 24.681)" fill="#01c38d" font-size="17" font-family="SegoeUI-Bold, Segoe UI" font-weight="700"><tspan x="0" y="0">$</tspan></text>
-                </g>
-            </svg>          
-            <a routerLink="./home/producciones" (click)="closeMenu()">Ahorros</a>
-        </div>
-        <div class="link__container">
-            <svg id="Icon_DB" data-name="Icon DB" xmlns="http://www.w3.org/2000/svg" width="31" height="26" viewBox="0 0 31 26">
-                <g id="Componente_37_3" data-name="Componente 37 – 3">
-                <g id="Elipse_24" data-name="Elipse 24" transform="translate(0 16)" fill="#35475f" stroke="#01c38d" stroke-width="2">
-                    <ellipse cx="15.5" cy="5" rx="15.5" ry="5" stroke="none"/>
-                    <ellipse cx="15.5" cy="5" rx="14.5" ry="4" fill="none"/>
-                </g>
-                <g id="Elipse_25" data-name="Elipse 25" transform="translate(0 12)" fill="#35475f" stroke="#01c38d" stroke-width="2">
-                    <ellipse cx="15.5" cy="5" rx="15.5" ry="5" stroke="none"/>
-                    <ellipse cx="15.5" cy="5" rx="14.5" ry="4" fill="none"/>
-                </g>
-                <g id="Elipse_26" data-name="Elipse 26" transform="translate(0 8)" fill="#35475f" stroke="#01c38d" stroke-width="2">
-                    <ellipse cx="15.5" cy="5" rx="15.5" ry="5" stroke="none"/>
-                    <ellipse cx="15.5" cy="5" rx="14.5" ry="4" fill="none"/>
-                </g>
-                <g id="Elipse_27" data-name="Elipse 27" transform="translate(0 4)" fill="#35475f" stroke="#01c38d" stroke-width="2">
-                    <ellipse cx="15.5" cy="5" rx="15.5" ry="5" stroke="none"/>
-                    <ellipse cx="15.5" cy="5" rx="14.5" ry="4" fill="none"/>
-                </g>
-                <g id="Elipse_28" data-name="Elipse 28" fill="#35475f" stroke="#01c38d" stroke-width="2">
-                    <ellipse cx="15.5" cy="5" rx="15.5" ry="5" stroke="none"/>
-                    <ellipse cx="15.5" cy="5" rx="14.5" ry="4" fill="none"/>
-                </g>
-                </g>
-            </svg>
-            <a routerLink="./home/arquitectura-deco" (click)="closeMenu()">Divizas</a>
-        </div>
+      <div class="link__container">
+          <svg id="Icon_Calendar" data-name="Icon Calendar" xmlns="http://www.w3.org/2000/svg" width="23" height="18" viewBox="0 0 33 28">
+              <g id="Rectángulo_42" data-name="Rectángulo 42" fill="#35475f" stroke="#01c38d" stroke-width="1">
+              <rect width="33" height="28" rx="3" stroke="none"/>
+              <rect x="0.5" y="0.5" width="32" height="27" rx="2.5" fill="none"/>
+              </g>
+              <line id="Línea_50" data-name="Línea 50" x2="32" transform="translate(0.5 6.5)" fill="none" stroke="#01c38d" stroke-width="1"/>
+              <line id="Línea_51" data-name="Línea 51" x2="3" transform="translate(6 10.5)" fill="none" stroke="#01c38d" stroke-linecap="round" stroke-width="1"/>
+              <line id="Línea_52" data-name="Línea 52" x2="3" transform="translate(12 10.5)" fill="none" stroke="#01c38d" stroke-linecap="round" stroke-width="1"/>
+              <line id="Línea_53" data-name="Línea 53" x2="3" transform="translate(18 10.5)" fill="none" stroke="#01c38d" stroke-linecap="round" stroke-width="1"/>
+              <line id="Línea_54" data-name="Línea 54" x2="3" transform="translate(24 10.5)" fill="none" stroke="#01c38d" stroke-linecap="round" stroke-width="1"/>
+              <line id="Línea_55" data-name="Línea 55" x2="3" transform="translate(6 14.5)" fill="none" stroke="#01c38d" stroke-linecap="round" stroke-width="1"/>
+              <line id="Línea_56" data-name="Línea 56" x2="3" transform="translate(12 14.5)" fill="none" stroke="#01c38d" stroke-linecap="round" stroke-width="1"/>
+              <line id="Línea_57" data-name="Línea 57" x2="3" transform="translate(18 14.5)" fill="none" stroke="#01c38d" stroke-linecap="round" stroke-width="1"/>
+              <line id="Línea_58" data-name="Línea 58" x2="3" transform="translate(24 14.5)" fill="none" stroke="#01c38d" stroke-linecap="round" stroke-width="1"/>
+              <line id="Línea_59" data-name="Línea 59" x2="3" transform="translate(6 18.5)" fill="none" stroke="#01c38d" stroke-linecap="round" stroke-width="1"/>
+              <line id="Línea_60" data-name="Línea 60" x2="3" transform="translate(12 18.5)" fill="none" stroke="#01c38d" stroke-linecap="round" stroke-width="1"/>
+              <line id="Línea_61" data-name="Línea 61" x2="3" transform="translate(18 18.5)" fill="none" stroke="#01c38d" stroke-linecap="round" stroke-width="1"/>
+              <line id="Línea_62" data-name="Línea 62" x2="3" transform="translate(24 18.5)" fill="none" stroke="#01c38d" stroke-linecap="round" stroke-width="1"/>
+              <line id="Línea_63" data-name="Línea 63" x2="3" transform="translate(6 22.5)" fill="none" stroke="#01c38d" stroke-linecap="round" stroke-width="1"/>
+              <line id="Línea_64" data-name="Línea 64" x2="3" transform="translate(12 22.5)" fill="none" stroke="#01c38d" stroke-linecap="round" stroke-width="1"/>
+              <line id="Línea_65" data-name="Línea 65" x2="3" transform="translate(18 22.5)" fill="none" stroke="#01c38d" stroke-linecap="round" stroke-width="1"/>
+              <line id="Línea_66" data-name="Línea 66" x2="3" transform="translate(24 22.5)" fill="none" stroke="#01c38d" stroke-linecap="round" stroke-width="1"/>
+          </svg>
+          <a routerLink="./home" (click)="closeMenu()">Calendario</a>
+      </div>
+      <div class="link__container">
+          <svg xmlns="http://www.w3.org/2000/svg" width="25" height="20" viewBox="0 0 28.088 32.175">
+              <g id="Icon_Safe" data-name="Icon Safe" transform="translate(0.505 0.599)">
+              <path id="Trazado_37" data-name="Trazado 37" d="M2556.9,4348.63s-7.426,4.752-8.02,13.96c.594,1.782-.466,1.444,2.644,7.663.406.541,5.408,2.569,8.383,1.082.406-.135,4.056-.676,5.273,0,.541.271,4.6,1.893,7.842,0,.271-.676,4.191-3.245,2.569-9.464-.27-.406-2.974-8.923-6.49-11.763-.676-.406-.946-1.623-3.11-2.7-.271-.406,1.893-3.109,3.11-3.515.406-.271-1.352-3.515-7.031-1.217-1.082.676-4.12-.405-5.169-1.217-.239-.406-4.024,0-2.672,2.434.406.406,2.672,4.741,2.672,4.741" transform="translate(-2548.879 -4341.319)" fill="#35475f" stroke="#01c38d" stroke-width="1"/>
+              <path id="Trazado_38" data-name="Trazado 38" d="M2556.195,4349.162s3.74,1.8,6.769.426l3.266-2.177" transform="translate(-2548.879 -4341.319)" fill="none" stroke="#01c38d" stroke-width="1"/>
+              <path id="Trazado_39" data-name="Trazado 39" d="M2556.526,4348.215s3.219.947,4.4.663l2.567-.611,2.687-1.093" transform="translate(-2548.879 -4341.319)" fill="none" stroke="#01c38d" stroke-width="1"/>
+              <path id="Trazado_40" data-name="Trazado 40" d="M2565.056,4371.25a8.394,8.394,0,0,1-2.913-1.711" transform="translate(-2548.879 -4341.319)" fill="none" stroke="#01c38d" stroke-linecap="round" stroke-width="1"/>
+              <text id="_" data-name="$" transform="translate(8.121 24.681)" fill="#01c38d" font-size="17" font-family="SegoeUI-Bold, Segoe UI" font-weight="700"><tspan x="0" y="0">$</tspan></text>
+              </g>
+          </svg>
+          <a routerLink="./home/producciones" (click)="closeMenu()">Ahorros</a>
+      </div>
+      <div class="link__container">
+          <svg id="Icon_DB" data-name="Icon DB" xmlns="http://www.w3.org/2000/svg" width="23" height="18" viewBox="0 0 31 26">
+              <g id="Componente_37_3" data-name="Componente 37 – 3">
+              <g id="Elipse_24" data-name="Elipse 24" transform="translate(0 16)" fill="#35475f" stroke="#01c38d" stroke-width="2">
+                  <ellipse cx="15.5" cy="5" rx="15.5" ry="5" stroke="none"/>
+                  <ellipse cx="15.5" cy="5" rx="14.5" ry="4" fill="none"/>
+              </g>
+              <g id="Elipse_25" data-name="Elipse 25" transform="translate(0 12)" fill="#35475f" stroke="#01c38d" stroke-width="2">
+                  <ellipse cx="15.5" cy="5" rx="15.5" ry="5" stroke="none"/>
+                  <ellipse cx="15.5" cy="5" rx="14.5" ry="4" fill="none"/>
+              </g>
+              <g id="Elipse_26" data-name="Elipse 26" transform="translate(0 8)" fill="#35475f" stroke="#01c38d" stroke-width="2">
+                  <ellipse cx="15.5" cy="5" rx="15.5" ry="5" stroke="none"/>
+                  <ellipse cx="15.5" cy="5" rx="14.5" ry="4" fill="none"/>
+              </g>
+              <g id="Elipse_27" data-name="Elipse 27" transform="translate(0 4)" fill="#35475f" stroke="#01c38d" stroke-width="2">
+                  <ellipse cx="15.5" cy="5" rx="15.5" ry="5" stroke="none"/>
+                  <ellipse cx="15.5" cy="5" rx="14.5" ry="4" fill="none"/>
+              </g>
+              <g id="Elipse_28" data-name="Elipse 28" fill="#35475f" stroke="#01c38d" stroke-width="2">
+                  <ellipse cx="15.5" cy="5" rx="15.5" ry="5" stroke="none"/>
+                  <ellipse cx="15.5" cy="5" rx="14.5" ry="4" fill="none"/>
+              </g>
+              </g>
+          </svg>
+          <a routerLink="./home/arquitectura-deco" (click)="closeMenu()">Divizas</a>
+      </div>
+      <div class="link__container">
+        <svg id="Icon_Config" data-name="Icon Config" xmlns="http://www.w3.org/2000/svg" width="23" height="18" viewBox="0 0 32 32">
+          <g id="Rectángulo_51" data-name="Rectángulo 51" transform="translate(12)" fill="#35475f" stroke="#01c38d" stroke-width="1">
+            <rect width="8" height="32" rx="1" stroke="none"/>
+            <rect x="0.5" y="0.5" width="7" height="31" rx="0.5" fill="none"/>
+          </g>
+          <g id="Rectángulo_52" data-name="Rectángulo 52" transform="translate(0 20) rotate(-90)" fill="#35475f" stroke="#01c38d" stroke-width="1">
+            <rect width="8" height="32" rx="1" stroke="none"/>
+            <rect x="0.5" y="0.5" width="7" height="31" rx="0.5" fill="none"/>
+          </g>
+          <g id="Rectángulo_53" data-name="Rectángulo 53" transform="translate(1.151 6.808) rotate(-45)" fill="#35475f" stroke="#01c38d" stroke-width="1">
+            <rect width="8" height="33" rx="1" stroke="none"/>
+            <rect x="0.5" y="0.5" width="7" height="32" rx="0.5" fill="none"/>
+          </g>
+          <g id="Rectángulo_54" data-name="Rectángulo 54" transform="translate(7.515 30.142) rotate(-135)" fill="#35475f" stroke="#01c38d" stroke-width="1">
+            <rect width="8" height="32" rx="1" stroke="none"/>
+            <rect x="0.5" y="0.5" width="7" height="31" rx="0.5" fill="none"/>
+          </g>
+          <g id="Elipse_30" data-name="Elipse 30" transform="translate(7 7)" fill="#35475f" stroke="#35475f" stroke-width="1">
+            <circle cx="9" cy="9" r="9" stroke="none"/>
+            <circle cx="9" cy="9" r="8.5" fill="none"/>
+          </g>
+          <g id="Elipse_31" data-name="Elipse 31" transform="translate(12 11)" fill="#01c38d" stroke="#01c38d" stroke-width="1">
+            <circle cx="4.5" cy="4.5" r="4.5" stroke="none"/>
+            <circle cx="4.5" cy="4.5" r="4" fill="none"/>
+          </g>
+        </svg>
+        <a routerLink="./home/arquitectura-deco" (click)="closeMenu()">Configuracion</a>
+      </div>
     </div>
+
+    <h4 class="title-end">misFinanzas</h4>
 
 </div>

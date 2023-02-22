@@ -1,0 +1,21 @@
+section {
+
+  h2 {
+    color: var(--light-green);
+    font-size: 18px;
+    text-align: center;
+    margin: .5rem auto;
+  }
+
+  p {
+    color: var(--light-grey);
+    font-size: 14px;
+    text-align: center;
+    margin: .2rem auto;
+  }
+
+  .button__container {
+    display: flex;
+    justify-content: center;
+  }
+}
