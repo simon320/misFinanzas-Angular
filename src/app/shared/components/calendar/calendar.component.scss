@@ -1,0 +1,32 @@
+.table {
+  margin: 0 auto 20px;
+}
+
+.header__container {
+  display: flex;
+  justify-content: center;
+  width: 80%;
+  margin: auto;
+
+  p {
+    color: var(--light-green);
+  }
+
+  button {
+    background: none;
+    border: none;
+    font-size: 1.5rem;
+    color: var(--light-grey);
+    margin: 0 2rem;
+  }
+}
+
+.today {
+  background-color: #009e6c;
+  color: #fff;
+}
+
+.in-prev-month,
+.in-next-month {
+  opacity: 0.5;
+}
