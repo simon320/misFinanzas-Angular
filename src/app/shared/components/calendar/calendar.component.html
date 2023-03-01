@@ -1,31 +1,32 @@
 <section>
 
   <div class="header__container">
-    <button class="button" (onclick)=getPrevMonth()> < </button>
+    <button class="button" (click)="getPrevMonth()"> < </button>
 
     <p>
-      {{ monthNames[selectedDate.getMonth()] | uppercase }} - {{ selectedDate.getFullYear() }}
+      {{ monthNames[selectedDate.getMonth()] }} - {{ selectedDate.getFullYear() }}
     </p>
 
-    <button class="button" (onclick)=getNextMonth()> > </button>
+    <button class="button" (click)="getNextMonth()"> > </button>
   </div>
 
   <table class="table">
 
     <thead>
-      <tr>
-          <th *ngFor="let day of daysShort">{{ day }}</th>
+      <tr class="line">
+          <th *ngFor="let day of daysShort">{{ day | uppercase }}</th>
       </tr>
     </thead>
 
     <tbody>
-
       <tr *ngFor="let col of calendarRows; let i = index">
-        <td class="{{col.classes}} {{ col.date === todayFormatted && 'today' }}" *ngFor="let col of calendarRows[i]">
+        <td
+          *ngFor="let col of calendarRows[i]"
+          (click)="dateClickHandle(col.date)"
+          class="{{col.classes}} {{ col.date === todayFormatted && 'today' }}" >
           {{ col.value }}
         </td>
       </tr>
-
     </tbody>
 
   </table>

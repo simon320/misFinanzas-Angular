@@ -1,10 +1,31 @@
 .table {
   margin: 0 auto 20px;
+  width: 83%;
+  border-collapse: collapse;
+
+  thead {
+    border-bottom: 1px solid var(--light-green);
+    height: 2.8rem;
+  }
+
+  th {
+    color: var(--light-grey);
+  }
+
+  td {
+    text-align: center;
+    height: 2.3rem;
+  }
+
+  .in-month {
+    color: var(--light-grey);
+  }
+
 }
 
 .header__container {
   display: flex;
-  justify-content: center;
+  justify-content: space-between;
   width: 80%;
   margin: auto;
 
@@ -24,6 +45,7 @@
 .today {
   background-color: #009e6c;
   color: #fff;
+  border-radius: 50%;
 }
 
 .in-prev-month,

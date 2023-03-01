@@ -1,9 +1,9 @@
-<section>
+<section @enterState>
   <h2>CONFIGURAR</h2>
   <p>{{ label }}</p>
 
   <div class="button__container">
-    <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="61" height="61" viewBox="0 0 61 61">
+    <svg (click)="openModal()" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="61" height="61" viewBox="0 0 61 61">
       <defs>
         <filter id="Elipse_8" x="0" y="0" width="61" height="61" filterUnits="userSpaceOnUse">
           <feOffset dy="5" input="SourceAlpha"/>

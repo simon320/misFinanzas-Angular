@@ -1,0 +1,55 @@
+.container {
+  position: relative;
+  display: flex;
+  justify-content: center;
+
+  .btn-close__container {
+    justify-self: flex-end;
+    position: absolute;
+    right: 0;
+    margin: .5rem;
+  }
+
+  h2 {
+    text-align: center;
+    color: var(--light-green);
+    font-size: 1rem;
+    margin-top: .5rem;
+  }
+
+  .amount {
+    margin-top: 0;
+    font-size: 2.5rem;
+  }
+}
+
+.option__container {
+  display: flex;
+  flex-direction: column;
+  width: 80%;
+  margin: 0.2rem auto 1rem;
+  padding: 1rem;
+  border: 1px solid #191E29;
+  border-radius: 20px;
+  box-shadow: 0 3px 6px rgba($color: #00000042, $alpha: 0.2),
+              inset 0 3px 6px rgba($color: #00000073, $alpha: 0.2);
+}
+
+p {
+  color: var(--light-green);
+}
+
+button {
+  width: 80px;
+  align-self: flex-end;
+  padding: .5rem;
+  border: none;
+  border-radius: 7px;
+
+  box-shadow: 0 3px 6px rgba($color: #00000042, $alpha: 0.9),
+              inset 0 3px 6px rgba($color: #ffffff73, $alpha: .5);
+}
+
+.button__accept {
+  background: var(--light-green);
+}

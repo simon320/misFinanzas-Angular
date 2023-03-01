@@ -1,0 +1,70 @@
+section {
+  width: 80%;
+  height: 450px;
+  margin: 2.2rem auto;
+  border: 1px solid #191E29;
+  border-radius: 20px;
+  box-shadow: 0 3px 6px rgba($color: #00000042, $alpha: 0.2),
+              inset 0 3px 6px rgba($color: #00000073, $alpha: 0.2);
+
+  h2 {
+    color: var(--light-green);
+    font-size: 18px;
+    text-align: center;
+    margin: .5rem auto;
+  }
+
+  p {
+    color: var(--light-grey);
+    font-size: 12px;
+    text-align: center;
+    margin: .2rem auto;
+  }
+
+  .description {
+    font-size: 20px;
+    color: var(--light-green);
+    margin: 3rem 1.4rem 1rem;
+  }
+
+  .input__container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+
+    label {
+      color: var(--light-grey);
+      margin: 1rem auto .2rem;
+    }
+
+    input {
+      width: 80%;
+      height: 30px;
+      border-radius: 5px;
+    }
+  }
+
+  .button__container {
+    display: flex;
+    justify-content: space-around;
+    margin: 2rem;
+
+    button {
+      padding: .5rem;
+      border: none;
+      border-radius: 7px;
+
+      box-shadow: 0 3px 6px rgba($color: #00000042, $alpha: 0.9),
+                  inset 0 3px 6px rgba($color: #ffffff73, $alpha: .5);
+    }
+
+    .button__cancel {
+      background-color: var(--dark-grey);
+    }
+
+    .button__accept {
+      background: var(--light-green);
+    }
+  }
+
+}

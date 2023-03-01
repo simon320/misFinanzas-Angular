@@ -4,8 +4,13 @@ section {
     height: 100vh;
 }
 
+.hidden-y {
+  overflow-y: hidden;
+}
+
 .home__container {
     position: relative;
+    height: 100%;
 }
 
 .acount__container {
@@ -14,7 +19,6 @@ section {
     min-height: 90px;
     padding-top: 5rem;
     padding-left: 1rem;
-    margin-bottom: 2rem;
 
     h2 {
         color: var(--light-green);
@@ -33,14 +37,22 @@ section {
 }
 
 .option__container {
+    position: absolute;
+    bottom: 0;
     background: var(--medium-blue);
-    height: 85vh;
+    height: 75%;
+    width: 100%;
     border-top-left-radius: 3rem;
     border-top-right-radius: 3rem;
     box-shadow: 0 8px 36px #000;
 
     display: flex;
     flex-direction: column;
+}
+
+.configcard__container {
+  display: flex;
+  flex-direction: column;
 }
 
 .button__container {
@@ -56,4 +68,39 @@ section {
         width: 155px;
         height: 125px;
     }
+}
+
+.background {
+  background-color: var(--medium-blue);
+}
+
+@keyframes showPanel {
+  0% { height: 72%; }
+  50% { height: 92%; background: var(--trasition-blue); }
+  100% { height: 90%; }
+}
+
+@keyframes backgroundShine {
+  50% { background: var(--trasition-blue); }
+}
+
+@keyframes closePanel {
+  0% { height: 90%; }
+  50% { height: 70%; }
+  100% { height: 75%; }
+}
+
+@keyframes moveHeader {
+  0% { padding-top: 5.1rem; }
+  100% { padding-top: 8px; }
+}
+
+@keyframes downHeader {
+  0% { padding-top: 8px; }
+  100% { padding-top: 5rem; }
+}
+
+@keyframes minHeight {
+  0% { height: 100%; opacity: .5; }
+  100% { height: 0%; opacity: 0; }
 }

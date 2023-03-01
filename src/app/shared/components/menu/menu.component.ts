@@ -1,4 +1,5 @@
 import { Component, ViewChild, ElementRef, Renderer2 } from '@angular/core';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-menu',
@@ -12,7 +13,10 @@ export class MenuComponent {
   useName: string = 'Simón Juarez';
 
 
-  constructor( private render: Renderer2) {}
+  constructor(
+    private router: Router,
+    private render: Renderer2
+  ) {}
 
   openMenu(): void {
     const menuNav = this.menuNav.nativeElement;
@@ -22,6 +26,7 @@ export class MenuComponent {
   closeMenu(){
     const menuNav = this.menuNav.nativeElement;
     this.render.removeClass(menuNav, 'show-menu');
+    this.router.navigateByUrl('/misfinanzas/home');
   }
 
 }

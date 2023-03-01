@@ -1,27 +1,55 @@
-<section>
-    <div class="home__container">
+<section @enterState>
+  <div class="home__container">
 
-        <app-menu></app-menu>
+    <app-menu></app-menu>
 
-        <div class="acount__container">
-            <h2 class="amount">$88.000</h2>
-            <span>Cuenta</span>
+    <div #asHeader class="acount__container">
+        <h2 (click)="removeChange()" class="amount">$88.000</h2>
+        <span>Cuenta</span>
+    </div>
+
+
+    <div #asPanel class="option__container">
+
+      <div #asConfigCard class="configcard__container" *ngIf="!configModal">
+        <div class="button__container">
+
+          <div class="card__button">
+            <app-config-card (showModal)="showAmountPerDayModal($event)" label="Libre por dia"></app-config-card>
+          </div>
+
+          <div class="card__button">
+            <app-config-card (showModal)="showSavingModal($event)" label="Ahorro"></app-config-card>
+          </div>
+
         </div>
 
-        <div class="option__container">
-            <div class="button__container">
-                <div class="card__button">
-                  <app-config-card label="Libre por dia"></app-config-card>
-                </div>
-                <div class="card__button">
-                  <app-config-card label="Ahorro"></app-config-card>
-                </div>
-            </div>
+      </div>
 
-            <div class="calendar__conatiner">
-              <app-calendar></app-calendar>
-            </div>
-        </div>
+      <div class="calendar__conatiner">
+        <app-calendar
+          @enterState
+          (dayDetails)="showDayDetails($event)"
+        ></app-calendar>
+      </div>
+
+      <div #asDaySelected class="background">
+        <app-day-details
+        [daySelected]="day"
+        ></app-day-details>
+      </div>
+
+      <app-modal-config-day
+        *ngIf="amountPerDayModal"
+        (showModal)="closeAmountPerDayModal($event)"
+      ></app-modal-config-day>
+
+      <app-modal-config-saving
+        *ngIf="savingModal"
+        (showModal)="closeSavingModal($event)"
+      ></app-modal-config-saving>
 
     </div>
+
+  </div>
 </section>

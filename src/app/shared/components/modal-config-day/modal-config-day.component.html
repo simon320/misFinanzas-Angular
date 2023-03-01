@@ -1,0 +1,31 @@
+<section @enterState>
+
+  <h2>CONFIGURAR</h2>
+  <p>{{ label }}</p>
+
+  <p class="description">
+    Cuentas con $ 88.000
+    elige los días en los que
+    te manejaras con ese dinero
+  </p>
+
+
+  <form>
+
+    <div class="input__container">
+
+      <label for="">Desde</label>
+      <input type="date">
+
+      <label for="">Hasta</label>
+      <input type="date">
+    </div>
+
+    <div class="button__container">
+      <button type="button" (click)="closeModal()" class="button__cancel">CANCELAR</button>
+      <button type="button" (click)="closeModal()" class="button__accept">ACEPTAR</button>
+    </div>
+
+  </form>
+
+</section>

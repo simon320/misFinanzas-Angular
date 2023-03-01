@@ -1,0 +1,242 @@
+section {
+  min-height: 100vh;
+  background: var(--medium-blue);
+}
+
+.header__container {
+  height: 4.5rem;
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  border-bottom: 1px solid var(--light-green);
+
+  h2 {
+    color: var(--light-green);
+  }
+
+  p {
+    color: var(--light-grey);
+    font-size: 10px;
+  }
+
+  .menu {
+    position: relative;
+    top: -2.2rem;
+    right: -2rem;
+  }
+}
+
+.body__container {
+  margin: auto;
+  display: flex;
+  flex-direction: column;
+
+  .money__movement {
+    padding: 0 1rem;
+    height: 85px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    border-bottom: 3px solid var(--line);
+
+    h3 {
+      color: var(--light-grey);
+    }
+
+    .expense {
+      color: var(--dark-grey);
+    }
+
+    .income {
+      color: var(--light-green);
+    }
+
+    .flex__container {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+    }
+  }
+
+  .button__delete {
+    height: 45px;
+    width: 50px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    svg {
+      margin-top: 4px;
+    }
+  }
+}
+
+.footer__container {
+  display: flex;
+  flex-direction: column;
+  color: var(--light-grey);
+  padding-bottom: 2rem;
+
+  .total__expense-day {
+    display: flex;
+    align-self: flex-end;
+
+    h2 {
+      margin: .8rem;
+    }
+  }
+
+  .button__add {
+    margin: auto;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 115px;
+    height: 115px;
+  }
+
+}
+
+button {
+  border: none;
+  background: none;
+}
+
+input {
+  background: var(--dark-blue);
+  width: 90%;
+  height: 45px;
+  margin: .5rem;
+  border: none;
+  border-radius: 30px;
+  box-shadow: inset 0 3px 6px rgba($color: #000000, $alpha: .5);
+  color: aliceblue;
+  padding-left: 1rem;
+}
+
+.button__accept {
+  width: 131px;
+  height: 50px;
+  margin-right: 2rem;
+  align-self: flex-end;
+  border: none;
+  border-radius: 30px;
+  background: var(--light-green);
+
+  box-shadow: 0 3px 6px rgba($color: #00000042, $alpha: 0.9),
+              inset 0 3px 6px rgba($color: #ffffff73, $alpha: .5);
+}
+
+.button__close-day {
+  width: 131px;
+  height: 35px;
+  margin-right: 2.5rem;
+  margin-bottom: 2rem;
+  align-self: flex-end;
+  border: none;
+  border-radius: 7px;
+  background: var(--light-green);
+  background: linear-gradient(to bottom, var(--light-green), #4f6d5a);
+
+  box-shadow: 0 3px 6px rgba($color: #00000042, $alpha: 0.9),
+              inset 0 3px 6px rgba($color: #ffffff73, $alpha: .5);
+}
+
+
+// Button switch
+
+.container-checkbox {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  min-height: 120px;
+  width: 150px;
+  border-radius: 25px;
+  margin: auto;
+}
+
+label {
+  position: relative;
+  margin: 5px 0;
+  cursor: pointer;
+}
+
+label input {
+  appearance: none;
+  display: none;
+}
+
+label span {
+  position: relative;
+  display: block;
+  width: 325px;
+  height: 50px;
+  background: var(--dark-blue);
+  border-radius: 40px;
+  box-shadow: inset 0 3px 6px rgba($color: #000000, $alpha: .5);
+}
+
+label .indicator-checkbox {
+  position: absolute;
+  top: 0;
+  left: -5px;
+  width: 160px;
+  height: 50px;
+  background: var(--light-green);
+  border-radius: 45px;
+  box-shadow: 0 3px 6px rgba($color: #00000042, $alpha: 0.9),
+              inset 0 3px 6px rgba($color: #ffffff73, $alpha: .5);
+  transform: scale(0.9);
+  transition: 0.5s;
+}
+
+label input:checked ~ .indicator-checkbox{
+  left: 170px;
+}
+
+label .indicator-checkbox::before {
+  content: 'GASTO';
+  position: absolute;
+  color: rgba(0, 0, 0, .8);
+  font-style: normal;
+  font-weight: 600;
+  font-size: 1.2rem;
+  top: 62%;
+  left: 47%;
+  width: 60px;
+  height: 40px;
+  transform: translate(-50%, -50%);
+
+  transition: 0.2s;
+}
+
+label input:checked ~ .indicator-checkbox::before {
+  content: 'INGRESO';
+  position: absolute;
+  color: rgba(0, 0, 0, .8);
+  font-style: normal;
+  font-weight: 600;
+  font-size: 1.2rem;
+  top: 62%;
+  left: 42%;
+  width: 60px;
+  height: 40px;
+  transform: translate(-50%, -50%);
+
+  transition: 0.2s;
+}
+
+.label__p-expense {
+  position: absolute;
+  top: 13px;
+  left: 60px;
+  color: var(--dark-grey);
+}
+
+.label__p-income {
+  position: absolute;
+  top: 13px;
+  left: 200px;
+  color: var(--dark-grey);
+}

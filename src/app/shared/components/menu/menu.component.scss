@@ -1,6 +1,6 @@
 .menu__container--nav {
   background: var(--medium-blue);
-  position: absolute;
+  position: fixed;
   width: 80vw;
   height: 100vh;
   z-index: 100;
@@ -37,8 +37,8 @@
   border: none;
   background: none;
   width: 18px;
-  margin-top: 16px;
-  margin-right: 20px;
+  margin-top: 20px;
+  margin-right: 25px;
   align-self: flex-end;
   cursor: pointer;
 }
