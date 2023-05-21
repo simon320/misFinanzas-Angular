@@ -19,6 +19,11 @@ export class DaySelectedComponent implements OnInit {
       amount: '1.500'
     },
     {
+      description: 'Regalo',
+      tipe: 'income',
+      amount: '1.530'
+    },
+    {
       description: 'Internet',
       tipe: 'expense',
       amount: '3.600'
@@ -36,5 +41,9 @@ export class DaySelectedComponent implements OnInit {
   }
 
   closeModal() {}
+
+  checkboxChange(event: any) {
+    console.log(event.target.checked)
+  }
 
 }

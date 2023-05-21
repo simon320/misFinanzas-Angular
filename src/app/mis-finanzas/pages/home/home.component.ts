@@ -36,12 +36,12 @@ export class HomeComponent implements OnInit, AfterViewInit {
 
   day!: Date;
 
-  constructor( private reder: Renderer2 ) {
+  constructor( private render: Renderer2 ) {
 
   }
   ngAfterViewInit(): void {
     const asPanel = this.panel.nativeElement;
-    this.reder.addClass(asPanel, 'hidden-y');
+    this.render.addClass(asPanel, 'hidden-y');
   }
 
   ngOnInit(): void {}
@@ -50,19 +50,19 @@ export class HomeComponent implements OnInit, AfterViewInit {
 
   change(): void {
     const asPanel = this.panel.nativeElement;
-    this.reder.setStyle(asPanel, 'padding-top', '1rem');
-    this.reder.removeClass(asPanel, 'hidden-y');
-    this.reder.setStyle(asPanel, 'animation', 'showPanel .5s ease-in-out forwards');
+    this.render.setStyle(asPanel, 'padding-top', '1rem');
+    this.render.removeClass(asPanel, 'hidden-y');
+    this.render.setStyle(asPanel, 'animation', 'showPanel .5s ease-in-out forwards');
 
     const asDaySelected = this.daySelected.nativeElement;
-    this.reder.setStyle(asDaySelected, 'animation', 'backgroundShine .5s ease-in-out forwards');
+    this.render.setStyle(asDaySelected, 'animation', 'backgroundShine .5s ease-in-out forwards');
 
     const asHeader = this.header.nativeElement;
-    this.reder.setStyle(asHeader, 'animation', 'moveHeader .2s forwards');
+    this.render.setStyle(asHeader, 'animation', 'moveHeader .2s forwards');
 
     if (this.configCard) {
       const asConfigCard = this.configCard.nativeElement;
-      this.reder.setStyle(asConfigCard, 'animation', 'minHeight .2s forwards');
+      this.render.setStyle(asConfigCard, 'animation', 'minHeight .2s forwards');
       setTimeout(() => { this.configModal = true; }, 1000);
     }
   }
@@ -70,13 +70,13 @@ export class HomeComponent implements OnInit, AfterViewInit {
   removeChange(): void {
     const asPanel = this.panel.nativeElement;
     const asHeader = this.header.nativeElement;
-    this.reder.setStyle(asPanel, 'padding-top', '0');
-    this.reder.addClass(asPanel, 'hidden-y');
-    this.reder.setStyle(asHeader, 'animation', 'downHeader .2s forwards');
-    this.reder.setStyle(asPanel, 'animation', 'closePanel .5s ease-in-out forwards');
+    this.render.setStyle(asPanel, 'padding-top', '0');
+    this.render.addClass(asPanel, 'hidden-y');
+    this.render.setStyle(asHeader, 'animation', 'downHeader .2s forwards');
+    this.render.setStyle(asPanel, 'animation', 'closePanel .5s ease-in-out forwards');
 
     const asDaySelected = this.daySelected.nativeElement;
-    this.reder.setStyle(asDaySelected, 'animation', 'closePanel .5s ease-in-out forwards');
+    this.render.setStyle(asDaySelected, 'animation', 'closePanel .5s ease-in-out forwards');
     this.configModal = false;
   }
 
