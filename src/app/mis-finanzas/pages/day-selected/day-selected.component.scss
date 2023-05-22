@@ -5,8 +5,9 @@ section {
 
 .header__container {
   height: 4.5rem;
+  padding: 0 2rem 0 1.2rem;
   display: flex;
-  justify-content: space-around;
+  justify-content: space-between;
   align-items: center;
   border-bottom: 1px solid var(--light-green);
 
@@ -71,20 +72,26 @@ section {
   }
 }
 
-.footer__container {
+.close__day {
   display: flex;
   flex-direction: column;
-  color: var(--light-grey);
-  padding-bottom: 2rem;
 
   .total__expense-day {
     display: flex;
     align-self: flex-end;
+    color: var(--light-grey);
 
     h2 {
       margin: .8rem;
     }
   }
+}
+
+.footer__container {
+  display: flex;
+  flex-direction: column;
+  color: var(--light-grey);
+  padding-bottom: 2rem;
 
   .button__add {
     margin: auto;
@@ -94,8 +101,8 @@ section {
     width: 115px;
     height: 115px;
   }
-
 }
+
 
 button {
   border: none;
@@ -153,12 +160,12 @@ input {
   min-height: 120px;
   width: 150px;
   border-radius: 25px;
-  margin: auto;
+  margin: -1.5rem auto;
 }
 
 label {
   position: relative;
-  margin: 5px 0;
+  margin: 0;
   cursor: pointer;
 }
 
@@ -177,7 +184,7 @@ label span {
   box-shadow: inset 0 3px 6px rgba($color: #000000, $alpha: .5);
 }
 
-label .indicator-checkbox {
+label .indicator-checkbox-uno {
   position: absolute;
   top: 0;
   left: -5px;
@@ -191,11 +198,11 @@ label .indicator-checkbox {
   transition: 0.5s;
 }
 
-label input:checked ~ .indicator-checkbox{
+label input:checked ~ .indicator-checkbox-uno{
   left: 170px;
 }
 
-label .indicator-checkbox::before {
+label .indicator-checkbox-uno::before {
   content: 'GASTO';
   position: absolute;
   color: rgba(0, 0, 0, .8);
@@ -211,8 +218,58 @@ label .indicator-checkbox::before {
   transition: 0.2s;
 }
 
-label input:checked ~ .indicator-checkbox::before {
+label input:checked ~ .indicator-checkbox-uno::before {
   content: 'INGRESO';
+  position: absolute;
+  color: rgba(0, 0, 0, .8);
+  font-style: normal;
+  font-weight: 600;
+  font-size: 1.2rem;
+  top: 62%;
+  left: 42%;
+  width: 60px;
+  height: 40px;
+  transform: translate(-50%, -50%);
+
+  transition: 0.2s;
+}
+
+label .indicator-checkbox-dos {
+  position: absolute;
+  top: 0;
+  left: -5px;
+  width: 160px;
+  height: 50px;
+  background: var(--light-green);
+  border-radius: 45px;
+  box-shadow: 0 3px 6px rgba($color: #00000042, $alpha: 0.9),
+              inset 0 3px 6px rgba($color: #ffffff73, $alpha: .5);
+  transform: scale(0.9);
+  transition: 0.5s;
+}
+
+label input:checked ~ .indicator-checkbox-dos{
+  left: 170px;
+}
+
+label .indicator-checkbox-dos::before {
+  content: 'CUENTA';
+  position: absolute;
+  color: rgba(0, 0, 0, .8);
+  font-style: normal;
+  font-weight: 600;
+  font-size: 1.2rem;
+  top: 62%;
+  left: 47%;
+  width: 60px;
+  height: 40px;
+  transform: translate(-50%, -50%);
+
+  transition: 0.2s;
+}
+
+label input:checked ~ .indicator-checkbox-dos::before {
+  content: 'AHORROS';
   position: absolute;
   color: rgba(0, 0, 0, .8);
   font-style: normal;
@@ -240,3 +297,31 @@ label input:checked ~ .indicator-checkbox::before {
   left: 200px;
   color: var(--dark-grey);
 }
+
+////////////////
+// CERRAR DIA //
+////////////////
+
+.label__amount-diff-day {
+  color: var(--light-green);
+}
+
+.label {
+  text-align: center;
+}
+
+.button__container {
+  display: flex;
+  justify-content: center;
+  width: 200px;
+  margin: auto;
+}
+
+.margin-top {
+  margin-top: 3.5rem;
+}
+
+.text-green {
+  color: var(--light-green);
+}
+
