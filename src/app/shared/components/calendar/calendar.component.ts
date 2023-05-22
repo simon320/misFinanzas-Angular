@@ -6,6 +6,7 @@ import {
   animate,
   transition,
 } from '@angular/animations';
+import { daysShort } from '../../enums/calendar.enum';
 
 @Component({
   selector: 'app-calendar',
@@ -33,7 +34,8 @@ export class CalendarComponent implements OnInit {
   todayFormatted!: string;
 
   daysShort = [
-    'Lu', 'Ma', 'Mi', 'Ju', 'Vi', 'Sa', 'Do'
+    daysShort.LUNES, daysShort.MARTES, daysShort.MIERCOLES,
+    daysShort.JUEVES, daysShort.VIERNES, daysShort.SABADO, daysShort.DOMINGO,
   ];
 
   monthNames = [
