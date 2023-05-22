@@ -26,14 +26,14 @@
 
       </div>
 
-      <div class="calendar__conatiner">
+      <div class="calendar__conatiner" *ngIf="calendarModal">
         <app-calendar
           @enterState
           (dayDetails)="showDayDetails($event)"
         ></app-calendar>
       </div>
 
-      <div #asDaySelected class="background">
+      <div #asDaySelected class="background" *ngIf="calendarModal">
         <app-day-details
         [daySelected]="day"
         ></app-day-details>

@@ -33,6 +33,7 @@ export class HomeComponent implements OnInit, AfterViewInit {
   configModal: boolean = false;
   savingModal: boolean = false;
   amountPerDayModal: boolean = false;
+  calendarModal: boolean = true;
 
   day!: Date;
 
@@ -84,21 +85,25 @@ export class HomeComponent implements OnInit, AfterViewInit {
   showAmountPerDayModal(event: boolean) {
     this.configModal = event;
     this.amountPerDayModal = event;
+    this.calendarModal = false;
   }
 
   closeAmountPerDayModal(event: boolean) {
     this.configModal = event;
     this.amountPerDayModal = event;
+    this.calendarModal = true;
   }
 
   showSavingModal(event: boolean) {
     this.configModal = event;
     this.savingModal = event;
+    this.calendarModal = false;
   }
 
   closeSavingModal(event: boolean) {
     this.configModal = event;
     this.savingModal = event;
+    this.calendarModal = true;
   }
 
   showDayDetails(event: Date) {
