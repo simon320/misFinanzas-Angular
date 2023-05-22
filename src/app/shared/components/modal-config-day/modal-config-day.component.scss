@@ -24,7 +24,7 @@ section {
   .description {
     font-size: 20px;
     color: var(--light-green);
-    margin: 3rem 1.4rem 1rem;
+    margin: 3rem 1.4rem .5rem;
   }
 
   .input__container {
@@ -38,16 +38,23 @@ section {
     }
 
     input {
+      background: var(--dark-blue);
       width: 80%;
-      height: 30px;
-      border-radius: 5px;
+      height: 40px;
+      border: none;
+      border-radius: 30px;
+      box-shadow: inset 0 3px 6px rgba($color: #000000, $alpha: .5);
+      color: var(--light-grey);
+      padding-left: 1rem;
+      text-align: center;
     }
   }
 
   .button__container {
     display: flex;
-    justify-content: space-around;
-    margin: 2rem;
+    justify-content: flex-end;
+    gap: 1rem;
+    margin: 1rem;
 
     button {
       padding: .5rem;
