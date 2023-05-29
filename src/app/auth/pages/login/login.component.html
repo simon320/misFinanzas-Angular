@@ -3,12 +3,12 @@
 
         <h1 class="title">misFinanzas</h1>
 
-        <form class="form__container">
-            <input type="email" placeholder="Ingrese su email" autocomplete="none">
-            <input type="password" placeholder="Ingrese su contraseña">
+        <form (ngSubmit)="login()" [formGroup]="userLogin" class="form__container">
+            <input formControlName="mail" type="email" placeholder="Ingrese su email" autocomplete="none">
+            <input formControlName="password" type="password" placeholder="Ingrese su contraseña">
 
             <div class="buttons__container">
-              <button routerLink="/auth/first-admission" class="active">LOGIN</button>
+              <button type="submit" class="active">LOGIN</button>
               <button routerLink="/auth/register">CREAR CUENTA</button>
             </div>
         </form>

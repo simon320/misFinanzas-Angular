@@ -1,6 +1,7 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 import { ErrorPageComponent } from './shared/pages/error-page/error-page.component';
+import { AuthGuard } from './guards/auth.guard';
 
 const routes: Routes = [
   {
@@ -14,7 +15,9 @@ const routes: Routes = [
   },
   {
     path: 'misfinanzas',
-    loadChildren: () => import('./mis-finanzas/mis-finanzas.module').then( m => m.MisFinanzasModule)
+    loadChildren: () => import('./mis-finanzas/mis-finanzas.module').then( m => m.MisFinanzasModule),
+    canActivate: [AuthGuard],
+    canLoad: [AuthGuard],
   },
   {
     path: '404',

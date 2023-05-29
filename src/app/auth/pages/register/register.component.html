@@ -3,14 +3,14 @@
 
       <h1 class="title">misFinanzas</h1>
 
-      <form class="form__container">
-          <input type="email" placeholder="Ingrese su email">
-          <input type="text" placeholder="Ingrese su nombre">
-          <input type="password" placeholder="Ingrese su contraseña">
-          <input type="password" placeholder="Repita la contraseña">
+      <form class="form__container" (ngSubmit)="saveNewUser()" [formGroup]="userForm">
+          <input formControlName="mail" type="email" placeholder="Ingrese su email">
+          <input formControlName="nickname" type="text" placeholder="Ingrese su nombre">
+          <input formControlName="password" type="password" placeholder="Ingrese su contraseña">
+          <input formControlName="confirmPassword" type="password" placeholder="Repita la contraseña">
 
           <div class="buttons__container">
-            <button class="active">CREAR CUENTA</button>
+            <button type="submit" class="active">CREAR CUENTA</button>
             <button class="button__link" routerLink="/auth/login">Ya tengo cuenta</button>
           </div>
       </form>

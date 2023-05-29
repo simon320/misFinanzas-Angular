@@ -7,6 +7,8 @@ import { ModalConfigDayComponent } from './components/modal-config-day/modal-con
 import { ModalConfigSavingComponent } from './components/modal-config-saving/modal-config-saving.component';
 import { ModalSavingComponent } from './components/modal-saving/modal-saving.component';
 import { DayDetailsComponent } from './components/day-details/day-details.component';
+import { SpinnerComponent } from './components/spinner/spinner.component';
+import { ReactiveFormsModule } from '@angular/forms';
 
 
 
@@ -19,9 +21,11 @@ import { DayDetailsComponent } from './components/day-details/day-details.compon
     ModalConfigDayComponent,
     ModalConfigSavingComponent,
     ModalSavingComponent,
+    SpinnerComponent
   ],
   imports: [
-    CommonModule
+    CommonModule,
+    ReactiveFormsModule
   ],
   exports: [
     CalendarComponent,
@@ -31,6 +35,8 @@ import { DayDetailsComponent } from './components/day-details/day-details.compon
     ModalConfigDayComponent,
     ModalConfigSavingComponent,
     ModalSavingComponent,
+    SpinnerComponent,
+    ReactiveFormsModule
   ]
 })
 export class SharedModule { }
