@@ -9,7 +9,6 @@ export class SpinnerService {
     isLoading$ = new Subject<boolean>();
 
     show(): void {
-      console.log("interceptor")
       this.isLoading$.next(true);
     }
 
