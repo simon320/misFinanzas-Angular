@@ -8,6 +8,7 @@ import { AbstractControl, ValidationErrors } from '@angular/forms';
 export class ValidateService {
   public emailPattern: string = '^[a-z0-9._%+-]+@[a-z0-9.-]+\\.[a-z]{2,4}$';
   public notEmpty: string = '[A-Za-z0-9]+';
+  public onlyLetter: string = '[A-Za-z ]+';
 
   compareFields(field1: string, field2: string): ValidationErrors | null {
     return (form: AbstractControl): ValidationErrors | null => {

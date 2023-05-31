@@ -3,6 +3,7 @@ export interface User {
   nickname: string
   password: string
   photo: string
+  first: true
 }
 
 export interface Pfx {
