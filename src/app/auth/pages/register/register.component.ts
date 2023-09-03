@@ -1,8 +1,10 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { Router } from '@angular/router';
 import { UserService } from 'src/app/services/user.service';
 import { ValidateService } from 'src/app/services/validate.service';
 import { User } from 'src/app/shared/Interfaces/interface';
+import { URL } from 'src/app/shared/enums/routes.enum';
 
 @Component({
   selector: 'app-register',
@@ -69,6 +71,7 @@ export class RegisterComponent implements OnInit {
   constructor(
     private fb: FormBuilder,
     private userService: UserService,
+    private router: Router,
     private validateService: ValidateService,
   ) {}
 
@@ -110,7 +113,11 @@ export class RegisterComponent implements OnInit {
 
     this.userService.createUser( newUser )
       .subscribe({
-        next: user => console.log(user)
+        next: (_) => {
+          alert('!Usuario creado con exito!\nAhora, ingrese esos datos para iniciar secion.')
+          this.router.navigateByUrl(URL.LOGIN)
+        },
+        error: user => console.log(newUser)
       })
   }
 

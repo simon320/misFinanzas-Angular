@@ -7,13 +7,21 @@ import { User } from '../shared/Interfaces/interface';
   providedIn: 'root'
 })
 export class UserService {
-  private url: string = `${environment.misFinanzasAPI}user/`;
+  private url: string = `${environment.misFinanzasAPI}`;
 
   constructor(
     private http: HttpClient,
   ) {}
 
   createUser(user: User) {
-    return this.http.post<User>(`${this.url}`, user);
+    return this.http.post<User>(`${this.url}auth/register`, user);
+  }
+
+  setFirstLogin(id: string, first: boolean) {
+    return this.http.patch<User>(`${this.url}user/first/${id}`, first);
+  }
+
+  updateUser(id: string, user: User) {
+    return this.http.patch<User>(`${this.url}user/${id}`, user);
   }
 }

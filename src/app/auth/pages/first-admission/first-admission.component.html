@@ -1,14 +1,14 @@
 <section>
-  <div class="first-admission__container">
+  <div class="admission__container">
 
       <h1 class="title">misFinanzas</h1>
 
       <p>
-        ¡Hola! te damos la bienvenida,
+        ¡Hola! {{ user.name }} te damos la bienvenida,
         para poder ayudarte con la
         administración y gestión de
         tus ingresos y gastos primero
-        vamos a configurar tu cuenta
+        vamos a configurar tu cuenta.
       </p>
 
       <p>
@@ -16,12 +16,14 @@
         dinero con el que cuentas hoy
       </p>
 
-      <form class="form__container">
-          <input type="numer" placeholder="Ingrese un monto" autocomplete="none">
+      <form [formGroup]="amountForm" (ngSubmit)="setAmountAccount()" class="form__container">
+        <div class="input__container">
+          <input formControlName="amount" type="number" placeholder="$ 0" class="input__value">
+        </div>
 
-          <div class="buttons__container">
-            <button class="active">CONTINUAR</button>
-          </div>
+        <div class="buttons__container">
+          <button type="submit" class="active">CONTINUAR</button>
+        </div>
       </form>
 
   </div>

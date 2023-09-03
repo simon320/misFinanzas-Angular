@@ -1,9 +1,10 @@
 export interface User {
+  _id?: string
   mail: string
   nickname: string
   password: string
   photo: string
-  first: true
+  first: boolean
 }
 
 export interface Pfx {
@@ -11,8 +12,8 @@ export interface Pfx {
   money_acount: number
   money_saved: ForeignCurrency[]
   money_per_day: number
-  start_selected_day: Date
-  end_selected_day: Date
+  start_selected_day: Date | string
+  end_selected_day: Date | string
   days: DescriptionDay[]
 }
 

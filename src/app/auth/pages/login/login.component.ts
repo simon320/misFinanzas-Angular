@@ -77,7 +77,8 @@ export class LoginComponent implements OnInit {
         next: (data) => {
           if (data) {
             localStorage.setItem('token', data.token)
-            if (data.user.first) this.router.navigate(['/misfinanzas/admission'])
+            if (data.user.first) 
+              this.router.navigate(['/auth/first-admission'], { queryParams: {id: data.user._id?.toString(), name: data.user.nickname }})
             else this.router.navigate(['/misfinanzas/home'])
           }
         },

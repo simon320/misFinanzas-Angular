@@ -16,8 +16,8 @@ const routes: Routes = [
   {
     path: 'misfinanzas',
     loadChildren: () => import('./mis-finanzas/mis-finanzas.module').then( m => m.MisFinanzasModule),
-    canActivate: [AuthGuard],
-    canLoad: [AuthGuard],
+    // canActivate: [AuthGuard],
+    // canLoad: [AuthGuard],
   },
   {
     path: '404',
