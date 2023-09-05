@@ -4,7 +4,7 @@
     <app-menu></app-menu>
 
     <div #asHeader class="acount__container">
-        <h2 (click)="removeChange()" class="amount">$88.000</h2>
+        <h2 (click)="removeChange()" class="amount">${{ wallet().money_acount }}</h2>
         <span>Cuenta</span>
     </div>
 
@@ -15,11 +15,11 @@
         <div class="button__container">
 
           <div class="card__button">
-            <app-config-card (showModal)="showAmountPerDayModal($event)" label="Libre por dia"></app-config-card>
+            <app-config-card (showModal)="toggleModal($event, 'PER_DAY')" label="Libre por dia"></app-config-card>
           </div>
 
           <div class="card__button">
-            <app-config-card (showModal)="showSavingModal($event)" label="Ahorro"></app-config-card>
+            <app-config-card (showModal)="toggleModal($event, 'SAVING')" label="Ahorro"></app-config-card>
           </div>
 
         </div>
@@ -41,12 +41,12 @@
 
       <app-modal-config-day
         *ngIf="amountPerDayModal"
-        (showModal)="closeAmountPerDayModal($event)"
+        (showModal)="toggleModal($event, 'PER_DAY')"
       ></app-modal-config-day>
 
       <app-modal-config-saving
         *ngIf="savingModal"
-        (showModal)="closeSavingModal($event)"
+        (showModal)="toggleModal($event, 'SAVING')"
       ></app-modal-config-saving>
 
     </div>

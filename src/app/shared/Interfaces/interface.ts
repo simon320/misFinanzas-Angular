@@ -7,7 +7,7 @@ export interface User {
   first: boolean
 }
 
-export interface Pfx {
+export interface Wallet {
   userId: string
   money_acount: number
   money_saved: ForeignCurrency[]

@@ -17,8 +17,8 @@ export class UserService {
     return this.http.post<User>(`${this.url}auth/register`, user);
   }
 
-  setFirstLogin(id: string, first: boolean) {
-    return this.http.patch<User>(`${this.url}user/first/${id}`, first);
+  setFirstLogin(id: string) {
+    return this.http.patch<User>(`${this.url}user/first/${id}`, {});
   }
 
   updateUser(id: string, user: User) {

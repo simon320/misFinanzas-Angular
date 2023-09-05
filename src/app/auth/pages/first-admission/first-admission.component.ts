@@ -1,10 +1,14 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 
-import { PfxService } from '../../../services/pfx.service';
+import { WalletService } from '../../../services/wallet.service';
 import { UserService } from '../../../services/user.service';
-import { Pfx } from 'src/app/shared/Interfaces/interface';
 import { FormBuilder, FormGroup } from '@angular/forms';
+import { Wallet } from '../../../shared/Interfaces/interface';
+import { UserStoreService } from 'src/app/store/user-store.service';
+import { User } from 'src/app/shared/enums/user.enum';
+import { URL } from 'src/app/shared/enums/routes.enum';
+import { WalletStoreService } from 'src/app/store/wallet-store.service';
 
 @Component({
   selector: 'app-first-admission',
@@ -12,7 +16,7 @@ import { FormBuilder, FormGroup } from '@angular/forms';
   styleUrls: ['./first-admission.component.scss'],
 })
 export class FirstAdmissionComponent implements OnInit {
-  wallet: Pfx = {
+  wallet: Wallet = {
     userId: '',
     money_acount: 0,
     money_saved: [],
@@ -28,8 +32,10 @@ export class FirstAdmissionComponent implements OnInit {
   constructor(
     private router: Router,
     private route: ActivatedRoute,
-    private pfxService: PfxService,
+    private walletService: WalletService,
     private userService: UserService,
+    private userSignal: UserStoreService,
+    private walletSignal: WalletStoreService,
     private fb: FormBuilder
   ) {}
   
@@ -59,12 +65,17 @@ export class FirstAdmissionComponent implements OnInit {
       this.wallet.userId = this.user.id;
     }
 
-    this.pfxService.createWallet(this.user.id, this.wallet).subscribe({
-      next: (_) => {
-        this.userService.setFirstLogin(this.user.id, false)
-          .subscribe( data => console.log(data) )
-        console.log(this.wallet)
-        this.router.navigate(['misfinanzas/home']);
+    this.walletService.createWallet(this.user.id, this.wallet).subscribe({
+      next: () => {
+        this.userService.setFirstLogin(this.user.id)
+          .subscribe({
+            next: _ => {
+              this.userSignal.set(User.FIRST, false);
+              this.walletSignal.setState(this.wallet);
+              this.router.navigate([URL.HOME]);
+            }
+          })
+        this.router.navigate([URL.FIRST_ADMISSION]);
       },
       error: console.error,
     });

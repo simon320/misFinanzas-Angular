@@ -1,5 +1,7 @@
 import { Component, ViewChild, ElementRef, Renderer2 } from '@angular/core';
 import { Router } from '@angular/router';
+import { UserStoreService } from 'src/app/store/user-store.service';
+
 
 @Component({
   selector: 'app-menu',
@@ -9,13 +11,13 @@ import { Router } from '@angular/router';
 export class MenuComponent {
   @ViewChild('menuNav') menuNav!: ElementRef;
 
-  userImg: string = '../../../assets/img-perfil.png';
-  useName: string = 'Simón Juarez';
-
+  readonly user = this.userSignal.state.asReadonly()
+  userImg: string = '../../../../assets/img-perfil.png';
 
   constructor(
     private router: Router,
-    private render: Renderer2
+    private render: Renderer2,
+    private userSignal: UserStoreService,
   ) {}
 
   openMenu(): void {

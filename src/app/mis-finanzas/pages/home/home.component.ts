@@ -1,4 +1,4 @@
-import { AfterViewInit, Component, ElementRef, OnInit, Renderer2, ViewChild } from '@angular/core';
+import { AfterViewInit, Component, ElementRef, Inject, OnInit, Renderer2, ViewChild } from '@angular/core';
 import {
   trigger,
   state,
@@ -6,6 +6,8 @@ import {
   animate,
   transition,
 } from '@angular/animations';
+import { UserStoreService } from 'src/app/store/user-store.service';
+import { WalletStoreService } from 'src/app/store/wallet-store.service';
 
 @Component({
   selector: 'app-home',
@@ -25,6 +27,9 @@ import {
   ],
 })
 export class HomeComponent implements OnInit, AfterViewInit {
+  readonly user = this.userSignal.state.asReadonly();
+  readonly wallet = this.walletSignal.state.asReadonly();
+
   @ViewChild('asPanel') panel!: ElementRef;
   @ViewChild('asHeader') header!: ElementRef;
   @ViewChild('asConfigCard') configCard!: ElementRef;
@@ -37,17 +42,18 @@ export class HomeComponent implements OnInit, AfterViewInit {
 
   day!: Date;
 
-  constructor( private render: Renderer2 ) {
+  constructor(
+    private render: Renderer2,
+    private userSignal: UserStoreService,
+    private walletSignal: WalletStoreService,
+  ) {}
 
-  }
+  ngOnInit(): void {}
+
   ngAfterViewInit(): void {
     const asPanel = this.panel.nativeElement;
     this.render.addClass(asPanel, 'hidden-y');
   }
-
-  ngOnInit(): void {}
-
-
 
   change(): void {
     const asPanel = this.panel.nativeElement;
@@ -82,34 +88,18 @@ export class HomeComponent implements OnInit, AfterViewInit {
   }
 
 
-  showAmountPerDayModal(event: boolean) {
+  toggleModal(event: boolean, modal: 'PER_DAY' | 'SAVING') {
     this.configModal = event;
-    this.amountPerDayModal = event;
-    this.calendarModal = false;
-  }
-
-  closeAmountPerDayModal(event: boolean) {
-    this.configModal = event;
-    this.amountPerDayModal = event;
-    this.calendarModal = true;
-  }
-
-  showSavingModal(event: boolean) {
-    this.configModal = event;
-    this.savingModal = event;
-    this.calendarModal = false;
-  }
-
-  closeSavingModal(event: boolean) {
-    this.configModal = event;
-    this.savingModal = event;
-    this.calendarModal = true;
+    this.calendarModal = !event;
+    if (modal === 'PER_DAY')
+      this.amountPerDayModal = event;
+    else
+      this.savingModal = event;
   }
 
   showDayDetails(event: Date) {
     this.day = event;
     this.change()
   }
-
 
 }

@@ -3,6 +3,11 @@ import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 import { AuthService } from 'src/app/services/auth.service';
 import { ValidateService } from 'src/app/services/validate.service';
+import { WalletService } from 'src/app/services/wallet.service';
+import { URL } from 'src/app/shared/enums/routes.enum';
+import { UserStoreService } from 'src/app/store/user-store.service';
+import { WalletStoreService } from 'src/app/store/wallet-store.service';
+
 
 @Component({
   selector: 'app-login',
@@ -45,6 +50,9 @@ export class LoginComponent implements OnInit {
     private router: Router,
     private fb: FormBuilder,
     private authService: AuthService,
+    private userSignal: UserStoreService,
+    private walletService: WalletService,
+    private walletSignal: WalletStoreService,
     private validateService: ValidateService,
     ) { }
 
@@ -77,9 +85,15 @@ export class LoginComponent implements OnInit {
         next: (data) => {
           if (data) {
             localStorage.setItem('token', data.token)
+            this.userSignal.setState(data.user)
+            data.user._id && this.walletService.getWallet(data.user._id!)
+              .subscribe( wallet => {
+                this.walletSignal.setState(wallet)
+                console.log(this.walletSignal.state())
+              })
             if (data.user.first) 
-              this.router.navigate(['/auth/first-admission'], { queryParams: {id: data.user._id?.toString(), name: data.user.nickname }})
-            else this.router.navigate(['/misfinanzas/home'])
+              this.router.navigate([URL.FIRST_ADMISSION], { queryParams: {id: data.user._id?.toString(), name: data.user.nickname }})
+            else this.router.navigate([URL.HOME])
           }
         },
         error: err => {
