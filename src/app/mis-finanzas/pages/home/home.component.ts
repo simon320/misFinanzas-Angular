@@ -6,8 +6,7 @@ import {
   animate,
   transition,
 } from '@angular/animations';
-import { UserStoreService } from 'src/app/store/user-store.service';
-import { WalletStoreService } from 'src/app/store/wallet-store.service';
+import { UserStoreService, WalletStoreService } from 'src/app/store/signals.service';
 
 @Component({
   selector: 'app-home',

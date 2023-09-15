@@ -5,10 +5,9 @@ import { WalletService } from '../../../services/wallet.service';
 import { UserService } from '../../../services/user.service';
 import { FormBuilder, FormGroup } from '@angular/forms';
 import { Wallet } from '../../../shared/Interfaces/interface';
-import { UserStoreService } from 'src/app/store/user-store.service';
+import { UserStoreService, WalletStoreService } from 'src/app/store/signals.service';
 import { User } from 'src/app/shared/enums/user.enum';
 import { URL } from 'src/app/shared/enums/routes.enum';
-import { WalletStoreService } from 'src/app/store/wallet-store.service';
 
 @Component({
   selector: 'app-first-admission',

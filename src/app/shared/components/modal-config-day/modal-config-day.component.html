@@ -4,26 +4,26 @@
   <p>{{ label }}</p>
 
   <p class="description">
-    Cuentas con $ 88.000
+    Cuentas con $ {{  wallet().money_acount }}
     elige los días en los que
     te manejaras con ese dinero
   </p>
 
 
-  <form>
+  <form [formGroup]="form">
 
     <div class="input__container">
 
       <label for="">Desde</label>
-      <input type="date">
+      <input type="date" formControlName="start_day">
 
       <label for="">Hasta</label>
-      <input type="date">
+      <input type="date" formControlName="end_day">
     </div>
 
     <div class="button__container">
       <button type="button" (click)="closeModal()" class="button__cancel">CANCELAR</button>
-      <button type="button" (click)="closeModal()" class="button__accept">ACEPTAR</button>
+      <button type="button" (click)="acceptDayConfig()" class="button__accept">ACEPTAR</button>
     </div>
 
   </form>

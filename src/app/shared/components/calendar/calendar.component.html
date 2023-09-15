@@ -23,7 +23,7 @@
         <td
           *ngFor="let col of calendarRows[i]"
           (click)="dateClickHandle(col.date)"
-          class="{{col.classes}} {{ col.date === todayFormatted && 'today' }}" >
+          class="{{ col.classes }} {{ col.date === todayFormatted && 'today' }}" >
           {{ col.value }}
         </td>
       </tr>

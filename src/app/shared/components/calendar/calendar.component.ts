@@ -1,4 +1,4 @@
-import { Component, EventEmitter, OnInit, Output } from '@angular/core';
+import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
 import {
   trigger,
   state,
@@ -27,6 +27,8 @@ import { daysShort } from '../../enums/calendar.enum';
 
 })
 export class CalendarComponent implements OnInit {
+  @Input() startDay!: Date | string;
+  @Input() endDay!: Date | string; 
   @Output() dayDetails = new EventEmitter<Date>();
 
   calendarRows: any;
@@ -66,9 +68,9 @@ export class CalendarComponent implements OnInit {
     this.calendar();
   }
 
-  calendar() {
+  calendar(startDay?: string, endDay?: string) {
     const today = new Date();
-    const todayFormatted = `${today.getDate()}-${today.getMonth() + 1}-${today.getFullYear()}`;
+    const todayFormatted = `${today.getFullYear()}/${today.getMonth() + 1}/${today.getDate()}`;
     const daysInWeek = [1, 2, 3, 4, 5, 6, 0];
     const selectedMonthLastDate = new Date(this.selectedDate.getFullYear(), this.selectedDate.getMonth() + 1, 0);
     const prevMonthLastDate = new Date(this.selectedDate.getFullYear(), this.selectedDate.getMonth(), 0);
@@ -92,29 +94,31 @@ export class CalendarComponent implements OnInit {
                 if(j < startingPoint){
                     calendarRows[i] = [...calendarRows[i],{
                         classes: 'in-prev-month',
-                        date: `${prevMonthStartingPoint}-${this.selectedDate.getMonth() === 0 ? 12 : this.selectedDate.getMonth()}-${this.selectedDate.getMonth() === 0 ? this.selectedDate.getFullYear() - 1 : this.selectedDate.getFullYear()}`,
+                        date: this.getDate('prevMonthStartingPoint', prevMonthStartingPoint, this.selectedDate),
                         value: `${prevMonthStartingPoint}`
                     }];
                     prevMonthStartingPoint++;
                 } else {
+                    const date = this.getDate('currentMonthCounter', currentMonthCounter, this.selectedDate);
                     calendarRows[i] = [...calendarRows[i],{
-                        classes: 'in-month',
-                        date: `${currentMonthCounter}-${this.selectedDate.getMonth() + 1}-${this.selectedDate.getFullYear()}`,
-                        value: currentMonthCounter
+                        date,
+                        value: currentMonthCounter,
+                        classes: (date >= startDay! && date < endDay!) ? 'in-month-selected' : 'in-month',
                     }];
                     currentMonthCounter++;
                 }
             } else if(i > 1 && currentMonthCounter < daysInMonth + 1){
+                const date = this.getDate('currentMonthCounter', currentMonthCounter, this.selectedDate);
                 calendarRows[i] = [...calendarRows[i],{
-                    classes: 'in-month',
-                    date: `${currentMonthCounter}-${this.selectedDate.getMonth() + 1}-${this.selectedDate.getFullYear()}`,
-                    value: currentMonthCounter
+                    date,
+                    value: currentMonthCounter,
+                    classes: (date >= startDay! && date < endDay!) ? 'in-month-selected' : 'in-month',
                 }];
                 currentMonthCounter++;
             } else {
                 calendarRows[i] = [...calendarRows[i],{
                     classes: 'in-next-month',
-                    date: `${nextMonthCounter}-${this.selectedDate.getMonth() + 2 === 13 ? 1 : this.selectedDate.getMonth() + 2}-${this.selectedDate.getMonth() + 2 === 13 ? this.selectedDate.getFullYear() + 1 : this.selectedDate.getFullYear()}`,
+                    date: this.getDate('nextMonthCounter', nextMonthCounter, this.selectedDate),
                     value: nextMonthCounter
                 }];
                 nextMonthCounter++;
@@ -123,6 +127,15 @@ export class CalendarComponent implements OnInit {
     }
     this.calendarRows = calendarRows;
     this.todayFormatted = todayFormatted;
+  }
+
+  getDate(configMonth: string, numberMonth: number, selectedDate: Date): string {
+    if(configMonth === 'prevMonthStartingPoint') return `${selectedDate.getMonth() === 0 ? 
+        selectedDate.getFullYear() - 1 : selectedDate.getFullYear()}/${selectedDate.getMonth() === 0 ? 12 : selectedDate.getMonth()}/${numberMonth}`
+
+    else if(configMonth === 'currentMonthCounter') return `${selectedDate.getFullYear()}/${selectedDate.getMonth() + 1}/${numberMonth}`
+    
+    else return `${this.selectedDate.getMonth() + 2 === 13 ? selectedDate.getFullYear() + 1 : selectedDate.getFullYear()}/${selectedDate.getMonth() + 2 === 13 ? 1 : selectedDate.getMonth() + 2}/${numberMonth}`
   }
 
 }

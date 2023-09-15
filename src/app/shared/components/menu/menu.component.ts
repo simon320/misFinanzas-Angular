@@ -1,6 +1,6 @@
 import { Component, ViewChild, ElementRef, Renderer2 } from '@angular/core';
 import { Router } from '@angular/router';
-import { UserStoreService } from 'src/app/store/user-store.service';
+import { UserStoreService } from 'src/app/store/signals.service';
 
 
 @Component({

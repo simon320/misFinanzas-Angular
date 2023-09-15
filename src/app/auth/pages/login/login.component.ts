@@ -5,8 +5,8 @@ import { AuthService } from 'src/app/services/auth.service';
 import { ValidateService } from 'src/app/services/validate.service';
 import { WalletService } from 'src/app/services/wallet.service';
 import { URL } from 'src/app/shared/enums/routes.enum';
-import { UserStoreService } from 'src/app/store/user-store.service';
-import { WalletStoreService } from 'src/app/store/wallet-store.service';
+import { UserStoreService } from 'src/app/store/signals.service';
+import { WalletStoreService } from 'src/app/store/signals.service';
 
 
 @Component({

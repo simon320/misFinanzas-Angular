@@ -30,6 +30,8 @@
         <app-calendar
           @enterState
           (dayDetails)="showDayDetails($event)"
+          [startDay]="wallet().start_selected_day"
+          [endDay]="wallet().end_selected_day"
         ></app-calendar>
       </div>
 

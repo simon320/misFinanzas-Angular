@@ -35,4 +35,4 @@ export class SignalStore<T> {
     public setState(partialState: Partial<T>): void {
       this.state.update((currentValue) => ({ ...currentValue, ...partialState }));
     }
-  }
+}
