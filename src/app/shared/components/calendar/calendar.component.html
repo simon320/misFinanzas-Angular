@@ -20,11 +20,14 @@
 
     <tbody>
       <tr *ngFor="let col of calendarRows; let i = index">
-        <td
-          *ngFor="let col of calendarRows[i]"
-          (click)="dateClickHandle(col.date)"
-          class="{{ col.classes }} {{ col.date === todayFormatted && 'today' }}" >
-          {{ col.value }}
+        <td *ngFor="let col of calendarRows[i]" class="position__relative {{ col.classes }}">
+
+          <div *ngIf="col.date === todayFormatted && col.date > wallet().start_selected_day" class="{{ col.date === todayFormatted && 'today__background' }}" >
+          </div>
+          <div (click)="dateClickHandle(col.date)" class="{{ col.classes }} {{ col.date === todayFormatted && 'today' }} {{ (col.date < todayFormatted && col.date >= wallet().start_selected_day) && 'previous_days' }}" >
+              {{ col.value }}
+          </div>
+
         </td>
       </tr>
     </tbody>

@@ -14,7 +14,8 @@
 
   td {
     text-align: center;
-    height: 2.3rem;
+    height: 2.8rem;
+    border-top: 5px var(--medium-blue) solid;
   }
 
   .in-month {
@@ -42,13 +43,71 @@
   }
 }
 
-.today {
+.in-prev-month-selected-start,
+.in-next-month-selected-start,
+.in-month-selected-start {
   background-color: #009e6c;
   color: #fff;
-  border-radius: 50%;
+}
+
+.in-prev-month-selected-end,
+.in-next-month-selected-end,
+.in-month-selected-end {
+  background-color: #009e6c;
+  color: #fff;
+}
+
+.in-month-selected {
+  background-color: #009e6c;
+  color: #fff;
 }
 
 .in-prev-month,
 .in-next-month {
   opacity: 0.5;
+}
+
+.in-start-day {
+  border-top-left-radius: 20px;
+  background-color: #009e6c;
+  color: #fff;
+}
+
+.in-end-day {
+  border-bottom-right-radius: 18px;
+  background-color: #009e6c;
+  color: #fff;
+}
+
+.today {
+  position: relative;
+  z-index: 1;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: #40f4bb;
+  color: #000000 !important;
+  border-radius: 35px;
+  height: 100%;
+}
+
+.previous_days {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: #2d3935;
+  opacity: .5;
+  height: 100%;
+}
+
+.position__relative {
+  position: relative;
+}
+
+.today__background {
+  position: absolute;
+  opacity: .5;
+  background-color: #2d3935;
+  height: 100%;
+  width: 50%;
 }

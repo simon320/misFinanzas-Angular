@@ -15,7 +15,7 @@
         <div class="button__container">
 
           <div class="card__button">
-            <app-config-card (showModal)="toggleModal($event, 'PER_DAY')" label="Libre por dia"></app-config-card>
+            <app-config-card (showModal)="toggleModal($event, 'PER_DAY')" label="Disponible por dia"></app-config-card>
           </div>
 
           <div class="card__button">
@@ -30,8 +30,6 @@
         <app-calendar
           @enterState
           (dayDetails)="showDayDetails($event)"
-          [startDay]="wallet().start_selected_day"
-          [endDay]="wallet().end_selected_day"
         ></app-calendar>
       </div>
 

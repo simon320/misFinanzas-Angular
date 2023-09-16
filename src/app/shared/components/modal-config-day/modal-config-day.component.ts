@@ -8,6 +8,7 @@ import {
 } from '@angular/animations';
 import { WalletStoreService } from 'src/app/store/signals.service';
 import { FormBuilder, FormGroup } from '@angular/forms';
+import { getDateFormatt } from '../../utils/utils';
 
 @Component({
   selector: 'app-modal-config-day',
@@ -55,10 +56,18 @@ export class ModalConfigDayComponent implements OnInit {
 
 
   acceptDayConfig() {
-    const start_selected_day = this.form.get("start_day")?.value;
-    const end_selected_day = this.form.get("end_day")?.value;
+    let start_selected_day: string = this.form.get("start_day")?.value;
+    let end_selected_day: string  = this.form.get("end_day")?.value;
+    console.log(start_selected_day + ' - ' + end_selected_day)// TODO: remover
 
     const money_per_day = this.getAmountPerDay(start_selected_day, end_selected_day);
+
+    start_selected_day = getDateFormatt(start_selected_day)
+    end_selected_day = getDateFormatt(end_selected_day)
+
+    console.log(start_selected_day + ' - ' + end_selected_day)// TODO: remover
+    console.log(start_selected_day > end_selected_day)// TODO: remover
+    console.log(start_selected_day < end_selected_day)// TODO: remover
 
     this.walletSignal.setState({ start_selected_day, end_selected_day, money_per_day });
 
@@ -75,10 +84,10 @@ export class ModalConfigDayComponent implements OnInit {
 
     const amountPerDay = Math.round( this.wallet().money_acount / amountDay );
     return amountPerDay;
-  } 
+  }
 
 
-  
+
   closeModal() {
     this.showModal.emit(false);
   }

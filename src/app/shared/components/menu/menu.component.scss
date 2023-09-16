@@ -1,4 +1,5 @@
 .menu__container--nav {
+  z-index: 1000;
   background: var(--medium-blue);
   position: fixed;
   width: 80vw;
