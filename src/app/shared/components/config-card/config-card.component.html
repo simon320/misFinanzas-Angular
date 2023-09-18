@@ -1,8 +1,8 @@
 <section @enterState>
 
-  <h2 *ngIf="title === 'CONFIGURAR';else moneyPerDay">{{ title }}</h2>
+  <h2 class="config" *ngIf="title === 'CONFIGURAR';else moneyPerDay">{{ title }}</h2>
   <ng-template #moneyPerDay>
-    <h2>${{ title }}</h2>
+    <h2 class="amount">${{ title }}</h2>
   </ng-template>
   <p>{{ label }}</p>
 

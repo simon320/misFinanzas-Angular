@@ -68,13 +68,18 @@
 }
 
 .in-start-day {
-  border-top-left-radius: 20px;
-  background-color: #009e6c;
+  border-top-left-radius: 50%;
+  border-bottom-left-radius: 50%;
   color: #fff;
 }
 
+.background__corner {
+  background-color: #009e6c;
+}
+
 .in-end-day {
-  border-bottom-right-radius: 18px;
+  border-top-right-radius: 50%;
+  border-bottom-right-radius: 50%;
   background-color: #009e6c;
   color: #fff;
 }
@@ -95,8 +100,7 @@
   display: flex;
   justify-content: center;
   align-items: center;
-  background-color: #2d3935;
-  opacity: .5;
+  background-color: #2e6452;
   height: 100%;
 }
 
@@ -107,7 +111,7 @@
 .today__background {
   position: absolute;
   opacity: .5;
-  background-color: #2d3935;
+  background-color: #2e6452;
   height: 100%;
   width: 50%;
 }

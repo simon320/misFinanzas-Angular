@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
+import { WalletStoreService } from '../../../store/signals.service';
 
 @Component({
   selector: 'app-day-selected',
@@ -7,6 +8,8 @@ import { Router } from '@angular/router';
   styleUrls: ['./day-selected.component.scss']
 })
 export class DaySelectedComponent implements OnInit {
+  readonly wallet = this.walletStoreService.state.asReadonly();
+
   addMovement: boolean = false;
   closeDay: boolean = false;
 
@@ -40,6 +43,7 @@ export class DaySelectedComponent implements OnInit {
 
   constructor(
     private router: Router,
+    private walletStoreService: WalletStoreService,
   ) { }
 
   ngOnInit(): void {

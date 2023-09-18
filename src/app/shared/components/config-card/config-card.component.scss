@@ -1,6 +1,13 @@
 section {
 
-  h2 {
+  .config {
+    color: var(--light-green);
+    font-size: 18px;
+    text-align: center;
+    margin: .5rem auto;
+  } 
+
+  .amount {
     color: var(--light-green);
     font-size: 18px;
     text-align: center;
