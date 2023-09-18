@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
-import { ActivatedRouteSnapshot, Route, Router, RouterStateSnapshot, UrlSegment, UrlTree } from '@angular/router';
-import { Observable } from 'rxjs';
+import { Router } from '@angular/router';
+
 
 @Injectable({
   providedIn: 'root'
@@ -13,7 +13,7 @@ export class AuthGuard  {
     const token = localStorage.getItem('token');
 
     if ( !token ) {
-      this.router.navigate(['/', 'login'])
+      this.router.navigateByUrl('auth/login')
       return false;
     } else {
       return true;
@@ -24,7 +24,7 @@ export class AuthGuard  {
     const token = localStorage.getItem('token');
 
     if ( !token ) {
-      this.router.navigate(['/', 'login'])
+      this.router.navigateByUrl('auth/login')
       return false;
     } else {
       return true;

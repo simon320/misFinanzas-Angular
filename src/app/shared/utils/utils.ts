@@ -16,13 +16,7 @@ export const getDateFormatt = (date: string) => {
     dateFormatt[2] = `0${dateFormatt[2]}`;
 
   let x = dateFormatt.join('/');
-  console.log(x);
 
   return x;
 
 }
-  // if(dateFormatt[1].charAt(0) === '0')
-  //   dateFormatt[1] = dateFormatt[1].slice(1);
-
-  // if(dateFormatt[2].charAt(0) === '0')
-  //   dateFormatt[2] = dateFormatt[2].slice(1);

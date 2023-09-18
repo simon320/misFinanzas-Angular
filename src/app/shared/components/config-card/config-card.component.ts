@@ -26,6 +26,7 @@ import {
   ],
 })
 export class ConfigCardComponent implements OnInit {
+  @Input() title!: string | number;
   @Input() label!: string;
   @Output() showModal = new EventEmitter<boolean>();
 

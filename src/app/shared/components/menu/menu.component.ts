@@ -18,7 +18,9 @@ export class MenuComponent {
     private router: Router,
     private render: Renderer2,
     private userSignal: UserStoreService,
-  ) {}
+  ) {
+    console.log(this.user())
+  }
 
   openMenu(): void {
     const menuNav = this.menuNav.nativeElement;

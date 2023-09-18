@@ -85,12 +85,13 @@ export class LoginComponent implements OnInit {
         next: (data) => {
           if (data) {
             localStorage.setItem('token', data.token)
+            localStorage.setItem('id', data.user._id!)
             this.userSignal.setState(data.user)
             data.user._id && this.walletService.getWallet(data.user._id!)
               .subscribe( wallet => {
                 this.walletSignal.setState(wallet)
-                console.log(this.walletSignal.state())
               })
+              
             if (data.user.first) 
               this.router.navigate([URL.FIRST_ADMISSION], { queryParams: {id: data.user._id?.toString(), name: data.user.nickname }})
             else this.router.navigate([URL.HOME])

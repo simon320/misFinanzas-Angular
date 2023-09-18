@@ -9,6 +9,9 @@ import {
 import { WalletStoreService } from 'src/app/store/signals.service';
 import { FormBuilder, FormGroup } from '@angular/forms';
 import { getDateFormatt } from '../../utils/utils';
+import { WalletService } from 'src/app/services/wallet.service';
+import { Router } from '@angular/router';
+import { URL } from '../../enums/routes.enum';
 
 @Component({
   selector: 'app-modal-config-day',
@@ -36,8 +39,10 @@ export class ModalConfigDayComponent implements OnInit {
   form!: FormGroup;
 
   constructor(
-    private walletSignal: WalletStoreService,
+    private router: Router,
     private fb: FormBuilder,
+    private walletService: WalletService,
+    private walletSignal: WalletStoreService,
   ) { }
 
   ngOnInit(): void {
@@ -58,20 +63,24 @@ export class ModalConfigDayComponent implements OnInit {
   acceptDayConfig() {
     let start_selected_day: string = this.form.get("start_day")?.value;
     let end_selected_day: string  = this.form.get("end_day")?.value;
-    console.log(start_selected_day + ' - ' + end_selected_day)// TODO: remover
 
     const money_per_day = this.getAmountPerDay(start_selected_day, end_selected_day);
 
     start_selected_day = getDateFormatt(start_selected_day)
     end_selected_day = getDateFormatt(end_selected_day)
 
-    console.log(start_selected_day + ' - ' + end_selected_day)// TODO: remover
-    console.log(start_selected_day > end_selected_day)// TODO: remover
-    console.log(start_selected_day < end_selected_day)// TODO: remover
-
-    this.walletSignal.setState({ start_selected_day, end_selected_day, money_per_day });
-
-    this.closeModal();
+    const id = localStorage.getItem("id");
+    this.walletService.updateWallet( id!, { start_selected_day, end_selected_day, money_per_day })
+      .subscribe({
+        next: _ => {
+          this.walletSignal.setState({ start_selected_day, end_selected_day, money_per_day });
+          this.closeModal();
+        },
+        error: _ => {
+          localStorage.removeItem("token");
+          this.router.navigateByUrl(URL.LOGIN);
+        }
+      });
   }
 
 
@@ -80,9 +89,9 @@ export class ModalConfigDayComponent implements OnInit {
     const startDayFormatt = new Date(startDay)
     const endDayFormatt = new Date(endDay)
 
-    const amountDay = ( endDayFormatt.getTime() - startDayFormatt.getTime() ) / 1000 / 60 / 60 / 24;
+    const amountDays = ( endDayFormatt.getTime() - startDayFormatt.getTime() ) / 1000 / 60 / 60 / 24 + 1;
 
-    const amountPerDay = Math.round( this.wallet().money_acount / amountDay );
+    const amountPerDay = Math.round( this.wallet().money_acount / amountDays );
     return amountPerDay;
   }
 

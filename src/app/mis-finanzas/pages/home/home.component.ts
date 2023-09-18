@@ -1,4 +1,4 @@
-import { AfterViewInit, Component, ElementRef, Inject, OnInit, Renderer2, ViewChild } from '@angular/core';
+import { AfterViewInit, Component, ElementRef, OnDestroy, Renderer2, ViewChild, effect } from '@angular/core';
 import {
   trigger,
   state,
@@ -25,7 +25,7 @@ import { UserStoreService, WalletStoreService } from 'src/app/store/signals.serv
     ]),
   ],
 })
-export class HomeComponent implements OnInit, AfterViewInit {
+export class HomeComponent implements AfterViewInit, OnDestroy {
   readonly user = this.userSignal.state.asReadonly();
   readonly wallet = this.walletSignal.state.asReadonly();
 
@@ -38,8 +38,15 @@ export class HomeComponent implements OnInit, AfterViewInit {
   savingModal: boolean = false;
   amountPerDayModal: boolean = false;
   calendarModal: boolean = true;
+  amountPerDay: string | number = "CONFIGURAR";
+  amountSaving: string | number = "CONFIGURAR";
 
   day!: Date;
+
+  effect = effect( _ => {
+    if(this.wallet().money_per_day !== 0)
+      this.amountPerDay = this.wallet().money_per_day;
+  })
 
   constructor(
     private render: Renderer2,
@@ -47,11 +54,13 @@ export class HomeComponent implements OnInit, AfterViewInit {
     private walletSignal: WalletStoreService,
   ) {}
 
-  ngOnInit(): void {}
-
   ngAfterViewInit(): void {
     const asPanel = this.panel.nativeElement;
     this.render.addClass(asPanel, 'hidden-y');
+  }
+
+  ngOnDestroy(): void  {
+    this.effect.destroy();
   }
 
   change(): void {

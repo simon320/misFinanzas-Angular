@@ -15,11 +15,11 @@
         <div class="button__container">
 
           <div class="card__button">
-            <app-config-card (showModal)="toggleModal($event, 'PER_DAY')" label="Disponible por dia"></app-config-card>
+            <app-config-card (showModal)="toggleModal($event, 'PER_DAY')" [title]="amountPerDay" label="Disponible por dia"></app-config-card>
           </div>
 
           <div class="card__button">
-            <app-config-card (showModal)="toggleModal($event, 'SAVING')" label="Ahorro"></app-config-card>
+            <app-config-card (showModal)="toggleModal($event, 'SAVING')" [title]="amountSaving" label="Ahorro"></app-config-card>
           </div>
 
         </div>
