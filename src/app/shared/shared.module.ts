@@ -9,34 +9,38 @@ import { ModalSavingComponent } from './components/modal-saving/modal-saving.com
 import { DayDetailsComponent } from './components/day-details/day-details.component';
 import { SpinnerComponent } from './components/spinner/spinner.component';
 import { ReactiveFormsModule } from '@angular/forms';
+import { SvgButtonDelete } from "./components/svg/svg-button-delete/svg-button-delete.component";
+import { SvgButtonAdd } from "./components/svg/svg-button-add/svg-button-add.component";
 
 
 
 @NgModule({
-  declarations: [
-    CalendarComponent,
-    ConfigCardComponent,
-    DayDetailsComponent,
-    MenuComponent,
-    ModalConfigDayComponent,
-    ModalConfigSavingComponent,
-    ModalSavingComponent,
-    SpinnerComponent
-  ],
-  imports: [
-    CommonModule,
-    ReactiveFormsModule
-  ],
-  exports: [
-    CalendarComponent,
-    ConfigCardComponent,
-    DayDetailsComponent,
-    MenuComponent,
-    ModalConfigDayComponent,
-    ModalConfigSavingComponent,
-    ModalSavingComponent,
-    SpinnerComponent,
-    ReactiveFormsModule
-  ]
+    declarations: [
+        CalendarComponent,
+        ConfigCardComponent,
+        DayDetailsComponent,
+        MenuComponent,
+        ModalConfigDayComponent,
+        ModalConfigSavingComponent,
+        ModalSavingComponent,
+        SpinnerComponent
+    ],
+    exports: [
+        CalendarComponent,
+        ConfigCardComponent,
+        DayDetailsComponent,
+        MenuComponent,
+        ModalConfigDayComponent,
+        ModalConfigSavingComponent,
+        ModalSavingComponent,
+        SpinnerComponent,
+        ReactiveFormsModule
+    ],
+    imports: [
+        CommonModule,
+        ReactiveFormsModule,
+        SvgButtonDelete,
+        SvgButtonAdd
+    ]
 })
 export class SharedModule { }

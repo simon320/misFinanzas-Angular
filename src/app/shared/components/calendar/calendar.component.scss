@@ -3,8 +3,8 @@
   width: 83%;
   border-collapse: collapse;
 
-  thead {
-    border-bottom: 1px solid var(--light-green);
+  .line {
+    border-bottom: 5px solid var(--light-green) !important;
     height: 2.8rem;
   }
 

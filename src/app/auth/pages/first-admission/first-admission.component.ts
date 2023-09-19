@@ -23,6 +23,7 @@ export class FirstAdmissionComponent implements OnInit {
     start_selected_day: '',
     end_selected_day: '',
     days: [],
+    movement: [],
   };
   amountForm!: FormGroup;
   user = { id: '', name: ''};

@@ -16,3 +16,11 @@ export class WalletStoreService extends SignalStore<Wallet> {
     super();
   }
 }
+
+
+@Injectable({ providedIn: 'root' })
+export class DayStoreService extends SignalStore<Date> {
+  constructor() { 
+    super();
+  }
+}

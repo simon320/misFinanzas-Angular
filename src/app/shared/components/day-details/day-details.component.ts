@@ -1,6 +1,7 @@
 import { Component, Input, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
-import { WalletStoreService } from 'src/app/store/signals.service';
+import { DayStoreService, WalletStoreService } from 'src/app/store/signals.service';
+import { URL } from '../../enums/routes.enum';
 
 @Component({
   selector: 'app-day-details',
@@ -10,19 +11,20 @@ import { WalletStoreService } from 'src/app/store/signals.service';
 export class DayDetailsComponent implements OnInit {
   readonly wallet = this.walletStoreService.state.asReadonly();
 
-  @Input() daySelected: Date = new Date();
+  @Input() daySelected!: Date;
 
   nameDay!: number;
 
   constructor(
     private router: Router,
     private walletStoreService: WalletStoreService,
+    private dayStoreService: DayStoreService
   ) { }
 
-  ngOnInit(): void {
+  ngOnInit(): void {    
   }
 
   addMove() {
-    this.router.navigateByUrl('/misfinanzas/day');
+    this.router.navigate([URL.DESCRIPTION_DAY]);
   }
 }

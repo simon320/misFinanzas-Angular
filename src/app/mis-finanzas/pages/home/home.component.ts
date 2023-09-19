@@ -1,4 +1,4 @@
-import { AfterViewInit, Component, ElementRef, OnDestroy, Renderer2, ViewChild, effect } from '@angular/core';
+import { AfterViewInit, Component, ElementRef, OnDestroy, Renderer2, ViewChild, effect, signal } from '@angular/core';
 import {
   trigger,
   state,
@@ -6,7 +6,7 @@ import {
   animate,
   transition,
 } from '@angular/animations';
-import { UserStoreService, WalletStoreService } from 'src/app/store/signals.service';
+import { DayStoreService, UserStoreService, WalletStoreService } from 'src/app/store/signals.service';
 
 
 @Component({
@@ -35,6 +35,7 @@ export class HomeComponent implements AfterViewInit, OnDestroy {
   @ViewChild('asConfigCard') configCard!: ElementRef;
   @ViewChild('asDaySelected') daySelected!: ElementRef;
 
+  pepe = signal(true)
   configModal: boolean = false;
   savingModal: boolean = false;
   amountPerDayModal: boolean = false;
@@ -53,6 +54,7 @@ export class HomeComponent implements AfterViewInit, OnDestroy {
     private render: Renderer2,
     private userSignal: UserStoreService,
     private walletSignal: WalletStoreService,
+    private daySignal: DayStoreService,
   ) {}
 
   ngAfterViewInit(): void {
@@ -107,6 +109,7 @@ export class HomeComponent implements AfterViewInit, OnDestroy {
   }
 
   showDayDetails(event: Date) {
+    this.daySignal.setState(event)
     this.day = event;
     this.change()
   }

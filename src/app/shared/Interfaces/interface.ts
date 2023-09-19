@@ -14,6 +14,7 @@ export interface Wallet {
   money_per_day: number
   start_selected_day: Date | string
   end_selected_day: Date | string
+  movement: Movement[]
   days: DescriptionDay[]
 }
 
@@ -30,8 +31,10 @@ export interface DescriptionDay {
 }
 
 export interface Movement {
+  day: Date
   description: string
   amount: number
+  tipe: 'expense' | 'income'
 }
 
 export interface SavingsMovement {
