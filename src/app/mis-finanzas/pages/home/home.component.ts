@@ -46,7 +46,7 @@ export class HomeComponent implements AfterViewInit, OnDestroy {
   day!: Date;
 
   effect = effect( _ => {
-    if(this.wallet().money_per_day !== 0)
+    if(this.wallet().money_per_day > 0)
       this.amountPerDay = this.wallet().money_per_day;
   })
 
