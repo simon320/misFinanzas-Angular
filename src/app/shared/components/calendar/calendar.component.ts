@@ -97,7 +97,7 @@ export class CalendarComponent implements OnInit {
                     calendarRows[i] = [...calendarRows[i],{
                       date,
                       value: `${prevMonthStartingPoint}`,
-                      classes: this.getStylesClass(date, j, 'prev')
+                      classes: this.getStylesClass(date, 'prev')
                     }];
                     prevMonthStartingPoint++;
                 } else {
@@ -105,7 +105,7 @@ export class CalendarComponent implements OnInit {
                     calendarRows[i] = [...calendarRows[i],{
                         date,
                         value: currentMonthCounter,
-                        classes: this.getStylesClass(date, j)
+                        classes: this.getStylesClass(date)
                     }];
                     currentMonthCounter++;
                 }
@@ -114,7 +114,7 @@ export class CalendarComponent implements OnInit {
                 calendarRows[i] = [...calendarRows[i],{
                     date,
                     value: currentMonthCounter,
-                    classes: this.getStylesClass(date, j)
+                    classes: this.getStylesClass(date)
                   }];
                 currentMonthCounter++;
             } else {
@@ -122,7 +122,7 @@ export class CalendarComponent implements OnInit {
               calendarRows[i] = [...calendarRows[i],{
                 date,
                 value: nextMonthCounter,
-                classes: this.getStylesClass(date, j, 'next')
+                classes: this.getStylesClass(date, 'next')
               }];
               nextMonthCounter++;
             }
@@ -152,43 +152,47 @@ export class CalendarComponent implements OnInit {
     }
   }
 
-  private getStylesClass(date: string, column: number, monthPosition?: string): string {
+  private getStylesClass(date: string, monthPosition?: string): string {
     if(date === this.wallet().start_selected_day) return 'in-start-day'
 
     if(date === this.wallet().end_selected_day) return 'in-end-day'
 
-    if(monthPosition === 'prev') {
-      switch (column) {
-        case 1:
-          return date >= this.wallet().start_selected_day && date <= this.wallet().end_selected_day ? 'in-prev-month-selected-start' : 'in-prev-month'
-        case 7:
-          return date >= this.wallet().start_selected_day && date <= this.wallet().end_selected_day ? 'in-prev-month-selected-end' : 'in-prev-month'
-        default:
-          return date >= this.wallet().start_selected_day && date <= this.wallet().end_selected_day ? 'in-prev-month-selected' : 'in-prev-month'
-        }
-      }
+    if(monthPosition)
+      return date >= this.wallet().start_selected_day && date <= this.wallet().end_selected_day ? 'in-selected' : `in-${monthPosition}-month`
+    else
+      return 'in-month'
 
-    else if(monthPosition === 'next') {
-      switch (column) {
-        case 1:
-          return date >= this.wallet().start_selected_day && date <= this.wallet().end_selected_day ? 'in-next-month-selected-start' : 'in-next-month'
-        case 7:
-          return date >= this.wallet().start_selected_day && date <= this.wallet().end_selected_day ? 'in-next-month-selected-end' : 'in-next-month'
-        default:
-          return date >= this.wallet().start_selected_day && date <= this.wallet().end_selected_day ? 'in-next-month-selected' : 'in-next-month'
-        }
-      }
+    // if(monthPosition === 'prev') {
+    //   switch (column) {
+    //     case 1:
+    //     case 7:
+    //       return date >= this.wallet().start_selected_day && date <= this.wallet().end_selected_day ? 'in-selected' : 'in-prev-month'
+    //     default:
+    //       return date >= this.wallet().start_selected_day && date <= this.wallet().end_selected_day ? 'in-selected' : 'in-prev-month'
+    //     }
+    //   }
 
-    else {
-      switch (column) {
-        case 1:
-          return date >= this.wallet().start_selected_day && date <= this.wallet().end_selected_day ? 'in-month-selected-start' : 'in-month'
-        case 7:
-          return date >= this.wallet().start_selected_day && date <= this.wallet().end_selected_day ? 'in-month-selected-end' : 'in-month'
-        default:
-          return date >= this.wallet().start_selected_day && date <= this.wallet().end_selected_day ? 'in-month-selected' : 'in-month'
-        }
-      }
+    // else if(monthPosition === 'next') {
+    //   switch (column) {
+    //     case 1:
+    //       return date >= this.wallet().start_selected_day && date <= this.wallet().end_selected_day ? 'in-selected' : 'in-next-month'
+    //     case 7:
+    //       return date >= this.wallet().start_selected_day && date <= this.wallet().end_selected_day ? 'in-selected' : 'in-next-month'
+    //     default:
+    //       return date >= this.wallet().start_selected_day && date <= this.wallet().end_selected_day ? 'in-selected' : 'in-next-month'
+    //     }
+    //   }
+
+    // else {
+    //   switch (column) {
+    //     case 1:
+    //       return date >= this.wallet().start_selected_day && date <= this.wallet().end_selected_day ? 'in-selected' : 'in-month'
+    //     case 7:
+    //       return date >= this.wallet().start_selected_day && date <= this.wallet().end_selected_day ? 'in-selected' : 'in-month'
+    //     default:
+    //       return date >= this.wallet().start_selected_day && date <= this.wallet().end_selected_day ? 'in-selected' : 'in-month'
+    //     }
+    //   }
   }
 
 }
