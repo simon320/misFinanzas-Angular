@@ -2,7 +2,7 @@
 
   <h2 class="config" *ngIf="title === 'CONFIGURAR';else moneyPerDay">{{ title }}</h2>
   <ng-template #moneyPerDay>
-    <h2 class="amount">${{ title }}</h2>
+    <h2 class="amount">{{ title  | currency | myCurrency }}</h2>
   </ng-template>
   <p>{{ label }}</p>
 

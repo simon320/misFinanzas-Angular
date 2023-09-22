@@ -97,7 +97,7 @@ export class CalendarComponent implements OnInit {
                     calendarRows[i] = [...calendarRows[i],{
                       date,
                       value: `${prevMonthStartingPoint}`,
-                      classes: this.getStylesClass(date, 'prev')
+                      classes: this.getStylesClass(date, 'in-prev-month')
                     }];
                     prevMonthStartingPoint++;
                 } else {
@@ -105,7 +105,7 @@ export class CalendarComponent implements OnInit {
                     calendarRows[i] = [...calendarRows[i],{
                         date,
                         value: currentMonthCounter,
-                        classes: this.getStylesClass(date)
+                        classes: this.getStylesClass(date, 'in-month')
                     }];
                     currentMonthCounter++;
                 }
@@ -114,7 +114,7 @@ export class CalendarComponent implements OnInit {
                 calendarRows[i] = [...calendarRows[i],{
                     date,
                     value: currentMonthCounter,
-                    classes: this.getStylesClass(date)
+                    classes: this.getStylesClass(date, 'in-month')
                   }];
                 currentMonthCounter++;
             } else {
@@ -122,7 +122,7 @@ export class CalendarComponent implements OnInit {
               calendarRows[i] = [...calendarRows[i],{
                 date,
                 value: nextMonthCounter,
-                classes: this.getStylesClass(date, 'next')
+                classes: this.getStylesClass(date, 'in-next-month')
               }];
               nextMonthCounter++;
             }
@@ -131,7 +131,6 @@ export class CalendarComponent implements OnInit {
     this.calendarRows = calendarRows;
     this.todayFormatted = getDateFormatt(todayFormatted);;
   }
-
 
 
   private getDate(configMonth: string, numberMonth: number, selectedDate: Date): string {
@@ -152,47 +151,10 @@ export class CalendarComponent implements OnInit {
     }
   }
 
-  private getStylesClass(date: string, monthPosition?: string): string {
+  private getStylesClass(date: string, monthPosition: string): string {
     if(date === this.wallet().start_selected_day) return 'in-start-day'
-
     if(date === this.wallet().end_selected_day) return 'in-end-day'
-
-    if(monthPosition)
-      return date >= this.wallet().start_selected_day && date <= this.wallet().end_selected_day ? 'in-selected' : `in-${monthPosition}-month`
-    else
-      return 'in-month'
-
-    // if(monthPosition === 'prev') {
-    //   switch (column) {
-    //     case 1:
-    //     case 7:
-    //       return date >= this.wallet().start_selected_day && date <= this.wallet().end_selected_day ? 'in-selected' : 'in-prev-month'
-    //     default:
-    //       return date >= this.wallet().start_selected_day && date <= this.wallet().end_selected_day ? 'in-selected' : 'in-prev-month'
-    //     }
-    //   }
-
-    // else if(monthPosition === 'next') {
-    //   switch (column) {
-    //     case 1:
-    //       return date >= this.wallet().start_selected_day && date <= this.wallet().end_selected_day ? 'in-selected' : 'in-next-month'
-    //     case 7:
-    //       return date >= this.wallet().start_selected_day && date <= this.wallet().end_selected_day ? 'in-selected' : 'in-next-month'
-    //     default:
-    //       return date >= this.wallet().start_selected_day && date <= this.wallet().end_selected_day ? 'in-selected' : 'in-next-month'
-    //     }
-    //   }
-
-    // else {
-    //   switch (column) {
-    //     case 1:
-    //       return date >= this.wallet().start_selected_day && date <= this.wallet().end_selected_day ? 'in-selected' : 'in-month'
-    //     case 7:
-    //       return date >= this.wallet().start_selected_day && date <= this.wallet().end_selected_day ? 'in-selected' : 'in-month'
-    //     default:
-    //       return date >= this.wallet().start_selected_day && date <= this.wallet().end_selected_day ? 'in-selected' : 'in-month'
-    //     }
-    //   }
+    return date >= this.wallet().start_selected_day && date <= this.wallet().end_selected_day ? 'in-selected' : monthPosition
   }
 
 }

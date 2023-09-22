@@ -9,7 +9,7 @@
 
       <div *ngIf="!closeDay" class="header__available">
         <p>Disponible</p>
-        <h2>${{ wallet().money_per_day }}</h2>
+        <h2>${{ wallet().money_per_day | currency | myCurrency }}</h2>
       </div>
 
       <app-menu class="menu"></app-menu>
