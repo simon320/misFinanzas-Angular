@@ -34,7 +34,7 @@ export interface Movement {
   day: Date
   description: string
   amount: number
-  tipe: 'expense' | 'income'
+  character: 'expense' | 'income' | string
 }
 
 export interface SavingsMovement {

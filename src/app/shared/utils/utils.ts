@@ -20,3 +20,11 @@ export const getDateFormatt = (date: string) => {
   return x;
 
 }
+
+export const utilsMonthNames = [
+  'Enero', 'Febrero', 'Marzo', 'Abril',
+  'Mayo', 'Junio', 'Julio', 'Agosto',
+  'Septiembre', 'Octubre', 'Noviembre', 'Diciembre'
+];
+
+export const UtilsDaysShort = [ 'Lu', 'Ma', 'Mi', 'Ju', 'Vi', 'Sa', 'Do' ];

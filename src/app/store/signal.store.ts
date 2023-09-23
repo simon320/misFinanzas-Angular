@@ -1,11 +1,12 @@
 import { Signal, computed, signal } from "@angular/core";
+import { Wallet } from "../shared/Interfaces/interface";
 
 export class SignalStore<T> {
     readonly state = signal({} as T);
-    
+
     constructor() {}
-    
-    
+
+
     /**
      * Crea una señal con la propiedad a leer del estado
      *
@@ -14,7 +15,7 @@ export class SignalStore<T> {
     public select<K extends keyof T>(key: K): Signal<T[K]>{
         return computed(() => this.state()[key]);
     }
-    
+
    /**
     * Este actualiza una sola propiedad del estado
     *
@@ -24,9 +25,9 @@ export class SignalStore<T> {
     public set<K extends keyof T>(key: K, data: T[K]) {
       this.state.update((currentValue) => ({ ...currentValue, [key]: data }));
     }
-    
+
     /**
-    * Este se utiliza cuando es necesario actualizar 
+    * Este se utiliza cuando es necesario actualizar
     * varias propiedades del estado.
     *
     * @param partialState - el estado Parcial o multiples propiedades
@@ -35,4 +36,5 @@ export class SignalStore<T> {
     public setState(partialState: Partial<T>): void {
       this.state.update((currentValue) => ({ ...currentValue, ...partialState }));
     }
+
 }

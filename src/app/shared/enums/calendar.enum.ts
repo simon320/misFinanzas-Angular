@@ -7,12 +7,3 @@ export enum daysShort {
   SABADO = 'Sa',
   DOMINGO = 'Do'
 }
-
-
-
-
-// monthNames = [
-//   'Enero', 'Febrero', 'Marzo', 'Abril',
-//   'Mayo', 'Junio', 'Julio', 'Agosto',
-//   'Septiembre', 'Octubre', 'Noviembre', 'Diciembre'
-// ];

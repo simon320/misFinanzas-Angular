@@ -8,7 +8,7 @@ const routes: Routes = [
     path: '',
     children: [
       { path: 'home', component: HomeComponent },
-      { path: 'day', component: DaySelectedComponent },
+      { path: 'day/:date', component: DaySelectedComponent },
       { path: '**', redirectTo: '404' }
     ]
   }

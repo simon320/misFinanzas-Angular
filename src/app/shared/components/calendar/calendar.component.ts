@@ -6,9 +6,8 @@ import {
   animate,
   transition,
 } from '@angular/animations';
-import { daysShort } from '../../enums/calendar.enum';
 import { WalletStoreService } from 'src/app/store/signals.service';
-import { getDateFormatt } from '../../utils/utils';
+import { UtilsDaysShort, getDateFormatt, utilsMonthNames } from '../../utils/utils';
 
 @Component({
   selector: 'app-calendar',
@@ -35,17 +34,8 @@ export class CalendarComponent implements OnInit {
   calendarRows: any;
   selectedDate: Date;
   todayFormatted!: string;
-
-  daysShort = [
-    daysShort.LUNES, daysShort.MARTES, daysShort.MIERCOLES,
-    daysShort.JUEVES, daysShort.VIERNES, daysShort.SABADO, daysShort.DOMINGO,
-  ];
-
-  monthNames = [
-    'Enero', 'Febrero', 'Marzo', 'Abril',
-    'Mayo', 'Junio', 'Julio', 'Agosto',
-    'Septiembre', 'Octubre', 'Noviembre', 'Diciembre'
-  ];
+  monthNames = utilsMonthNames
+  daysShort = UtilsDaysShort
 
   constructor( private walletSignal: WalletStoreService ) {
     this.selectedDate = new Date();

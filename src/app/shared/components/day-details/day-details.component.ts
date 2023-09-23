@@ -21,10 +21,10 @@ export class DayDetailsComponent implements OnInit {
     private dayStoreService: DayStoreService
   ) { }
 
-  ngOnInit(): void {    
+  ngOnInit(): void {
   }
 
   addMove() {
-    this.router.navigate([URL.DESCRIPTION_DAY]);
+    this.router.navigate([URL.DESCRIPTION_DAY, this.daySelected]);
   }
 }

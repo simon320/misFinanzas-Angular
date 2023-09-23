@@ -12,6 +12,8 @@ import { ReactiveFormsModule } from '@angular/forms';
 import { SvgButtonDelete } from "./components/svg/svg-button-delete/svg-button-delete.component";
 import { SvgButtonAdd } from "./components/svg/svg-button-add/svg-button-add.component";
 import { MyCurrencyPipe } from './pipes/my-currency.pipe';
+import { MyDatePipe } from './pipes/my-date.pipe';
+import { MyMonthPipe } from './pipes/my-month.pipe';
 
 
 
@@ -25,7 +27,9 @@ import { MyCurrencyPipe } from './pipes/my-currency.pipe';
         ModalConfigSavingComponent,
         ModalSavingComponent,
         SpinnerComponent,
-        MyCurrencyPipe
+        MyCurrencyPipe,
+        MyDatePipe,
+        MyMonthPipe,
     ],
     exports: [
         CalendarComponent,
@@ -37,7 +41,9 @@ import { MyCurrencyPipe } from './pipes/my-currency.pipe';
         ModalSavingComponent,
         SpinnerComponent,
         ReactiveFormsModule,
-        MyCurrencyPipe
+        MyCurrencyPipe,
+        MyDatePipe,
+        MyMonthPipe,
     ],
     imports: [
         CommonModule,
