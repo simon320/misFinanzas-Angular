@@ -4,17 +4,17 @@
   <div class="header__container">
     <h2>{{ daySelected | myDate }}</h2>
 
-    <div *ngIf="daySelected >= wallet().start_selected_day && daySelected <= wallet().end_selected_day" class="header__available">
+    <div *ngIf="daySelected >= walletSignal().start_selected_day && daySelected <= walletSignal().end_selected_day" class="header__available">
       <p>Disponible</p>
-      <h2 >{{ wallet().money_per_day | currency | myCurrency }}</h2>
+      <h2 >{{ walletSignal().money_per_day | currency | myCurrency }}</h2>
     </div>
   </div>
 
   <div class="body__container">
-    <div class="money__movement">
-      <h3>Luz</h3>
+    <div *ngFor="let movement of movements" class="money__movement">
+      <h3>{{ movement.description }}</h3>
       <div class="flex__container">
-        <h3>-$4.500</h3>
+        <h3>{{ movement.amount }}</h3>
         <button class="button__delete">
           <app-svg-button-delete class="svg"></app-svg-button-delete>
         </button>

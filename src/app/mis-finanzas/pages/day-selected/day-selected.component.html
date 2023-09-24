@@ -40,7 +40,7 @@
 
       <div class='container-checkbox' *ngIf="addMovement">
         <label>
-          <input type="checkbox" (click)="checkboxChange($event)" formControlName="character"/>
+          <input type="checkbox" formControlName="character"/>
           <span>
             <p class="label__p-expense">GASTO</p>
             <p class="label__p-income">INGRESO</p>
@@ -74,7 +74,7 @@
     <h2 class="label margin-top">USARLO EN...</h2>
     <div class="container-checkbox">
       <label>
-        <input type="checkbox" (click)="checkboxChange($event)"/>
+        <input type="checkbox"/>
         <span>
           <p class="label__p-expense">CUENTA</p>
           <p class="label__p-income">AHORROS</p>
