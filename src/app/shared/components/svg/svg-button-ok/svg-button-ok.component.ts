@@ -4,7 +4,7 @@ import { Component } from '@angular/core';
   selector: 'app-svg-button-ok',
   standalone: true,
   template: `
-        <svg width="91" height="91" viewBox="0 0 91 91">
+        <svg width="65" height="65" viewBox="0 0 91 91">
           <defs>
             <filter id="Elipse_8" x="0" y="0" width="91" height="91" filterUnits="userSpaceOnUse">
               <feOffset dy="5" input="SourceAlpha"/>
