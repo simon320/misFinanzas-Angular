@@ -11,9 +11,9 @@
   </div>
 
   <div class="body__container">
-    <div *ngFor="let movement of movements" class="money__movement">
-      <h3>{{ movement.description }}</h3>
-      <div class="flex__container">
+    <div *ngFor="let movement of movements, index as i" class="money__movement">
+      <h3 *ngIf="i < 4">{{ movement.description }}</h3>
+      <div *ngIf="i < 4" class="flex__container">
         <h3>{{ movement.amount }}</h3>
         <button class="button__delete">
           <app-svg-button-delete class="svg"></app-svg-button-delete>
@@ -21,13 +21,13 @@
       </div>
     </div>
 
-    <p>Ver más...</p>
+    <p *ngIf="movements.length > 3" (click)="addMove()">Ver más...</p>
   </div>
 
   <div class="footer__container">
     <div class="total__expense-day">
       <h2>TOTAL</h2>
-      <h2>-$1.500</h2>
+      <h2>${{ totalPriceOfMovements }}</h2>
     </div>
 
     <button class="button__add">

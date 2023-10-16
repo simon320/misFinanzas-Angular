@@ -1,11 +1,12 @@
 import { Component, OnDestroy, OnInit, effect } from '@angular/core';
-import { ActivatedRoute, Router } from '@angular/router';
-import { WalletStoreService } from '../../../store/signals.service';
-import { Movement } from 'src/app/shared/Interfaces/interface';
-import { URL } from 'src/app/shared/enums/routes.enum';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { ActivatedRoute, Router } from '@angular/router';
 import { Subscription } from 'rxjs';
+
+import { URL } from 'src/app/shared/enums/routes.enum';
+import { Movement } from 'src/app/shared/Interfaces/interface';
 import { WalletService } from 'src/app/services/wallet.service';
+import { WalletStoreService } from '../../../store/signals.service';
 
 @Component({
   selector: 'app-day-selected',
@@ -22,9 +23,11 @@ export class DaySelectedComponent implements OnInit, OnDestroy {
   closeDay: boolean = false;
   movementForm!: FormGroup;
   day!: string;
+  totalPriceOfMovements: number = 0;
 
   effect = effect(() => {
     this.getMovementByDay();
+    this.getTotalPriceOfMovements();
   });
 
   constructor(
@@ -33,19 +36,20 @@ export class DaySelectedComponent implements OnInit, OnDestroy {
     private activitedRoute: ActivatedRoute,
     private walletSignal: WalletStoreService,
     private walletService: WalletService,
-  ) { }
-
-  ngOnDestroy(): void {
-    this.subcription.unsubscribe();
-  }
+  ) {}
 
   ngOnInit(): void {
     this.createForm();
     this.getDayFormatted()
     this.getMovementByDay();
+    this.getTotalPriceOfMovements();
   }
 
-  getDayFormatted() {
+  ngOnDestroy(): void {
+    this.subcription.unsubscribe();
+  }
+
+  private getDayFormatted(): void {
     this.subcription = this.activitedRoute.url.subscribe(
       date => {
         this.day = date[1].path;
@@ -53,11 +57,24 @@ export class DaySelectedComponent implements OnInit, OnDestroy {
       })
   }
 
-  getMovementByDay() {
-    this.movements = this.wallet().movement.filter( movement =>  movement.day.toString().slice(0, 10) === this.day)
+  private getMovementByDay(): void {
+    if(this.wallet().movement) {
+      this.movements = this.wallet().movement.filter( 
+        movement =>  movement.day.toString().slice(0, 10) === this.day
+      )
+    }
   }
 
-  createForm() {
+  private getTotalPriceOfMovements(): void {
+    this.movements.forEach( movement => {
+      if(movement.character === 'expense') 
+        this.totalPriceOfMovements -= movement.amount;
+      else 
+        this.totalPriceOfMovements += movement.amount;
+    })
+  }
+
+  private createForm(): void {
     this.movementForm = this.fb.group({
       description: ["", Validators.required],
       amount: [0, Validators.required],
@@ -65,15 +82,15 @@ export class DaySelectedComponent implements OnInit, OnDestroy {
     })
   }
 
-  openAddMovement(condition: boolean) {
+  public openAddMovement(condition: boolean): void {
     this.addMovement = condition;
   }
 
-  openCloseDay(condition: boolean) {
+  public openCloseDay(condition: boolean): void {
     this.closeDay = condition;
   }
 
-  saveForm() {
+  public saveForm(): void {
     if(this.movementForm.invalid) {
       this.movementForm.markAllAsTouched();
       return;
@@ -103,7 +120,7 @@ export class DaySelectedComponent implements OnInit, OnDestroy {
       });
   }
 
-  saveDay() {
+  public saveDay(): void {
     setTimeout(
       ()=> { this.router.navigateByUrl(URL.HOME) },
       500

@@ -31,7 +31,7 @@
     <div *ngIf="!closeDay" class="close__day">
       <div class="total__expense-day">
         <h2>TOTAL</h2>
-        <h2>-$1.500</h2>
+        <h2>${{ totalPriceOfMovements }}</h2>
       </div>
       <button type="button" (click)="openCloseDay(true)" class="button__close-day">CERRAR DIA</button>
     </div>
