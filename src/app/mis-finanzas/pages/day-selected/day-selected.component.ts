@@ -98,6 +98,7 @@ export class DaySelectedComponent implements OnInit, OnDestroy {
 
     const { description, amount, character } = this.movementForm.value;
     const newMovement = {
+      id: new Date().getTime().toString(),
       description,
       amount,
       character: character === false ? 'expense' : 'income',
@@ -113,6 +114,7 @@ export class DaySelectedComponent implements OnInit, OnDestroy {
         next: _ => {
           this.walletSignal.setState({ movement: newMovementArray });
           this.openAddMovement(false)
+          this.movementForm.reset();
         },
         error: _ => {
           console.log("NO SE PUDO GRABAR EL MOVIMIENTO")

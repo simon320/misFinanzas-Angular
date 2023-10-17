@@ -16,7 +16,7 @@
       <div *ngIf="i < 4" class="flex__container">
         <h3>{{ movement.amount }}</h3>
         <button class="button__delete">
-          <app-svg-button-delete class="svg"></app-svg-button-delete>
+          <app-svg-button-delete class="svg" (click)="deleteMovement(i)"></app-svg-button-delete>
         </button>
       </div>
     </div>

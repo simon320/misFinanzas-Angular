@@ -1,3 +1,5 @@
+import { UUID } from "crypto"
+
 export interface User {
   _id?: string
   mail: string
@@ -31,6 +33,7 @@ export interface DescriptionDay {
 }
 
 export interface Movement {
+  id: string,
   day: Date
   description: string
   amount: number
