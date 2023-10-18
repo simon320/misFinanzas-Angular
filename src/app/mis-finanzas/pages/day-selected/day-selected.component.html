@@ -16,13 +16,13 @@
     </div>
 
     <div *ngIf="!closeDay" class="body__container">
-      <div *ngFor="let movement of movements" class="money__movement">
+      <div *ngFor="let movement of movements, index as i" class="money__movement">
         <h3>{{ movement.description }}</h3>
         <div class="flex__container">
           <h3 class="expense" *ngIf="movement.character === 'expense'">$ -{{ movement.amount }}</h3>
           <h3 class="income" *ngIf="movement.character === 'income'">$ +{{ movement.amount }}</h3>
           <button class="button__delete">
-            <app-svg-button-delete class="svg"></app-svg-button-delete>
+            <app-svg-button-delete class="svg" (click)="deleteMovement(i)"></app-svg-button-delete>
           </button>
         </div>
       </div>
@@ -69,29 +69,32 @@
 
 
     <h2 class="label margin-top">DIFERENCIA DEL DIA</h2>
-    <h2 class="label text-green">+$1000</h2>
+    <h2 class="label text-green">${{ totalPriceOfMovements }}</h2>
 
-    <h2 class="label margin-top">USARLO EN...</h2>
-    <div class="container-checkbox">
-      <label>
-        <input type="checkbox"/>
-        <span>
-          <p class="label__p-expense">CUENTA</p>
-          <p class="label__p-income">AHORROS</p>
-        </span>
-        <i class='indicator-checkbox-dos'></i>
-      </label>
-    </div>
-    <h2 class="label text-green">+$88.000</h2>
+    <form class="form__container" [formGroup]="closeDayForm" class="footer__container">
+      <h2 class="label margin-top">USARLO EN...</h2>
+      <div class="container-checkbox">
+        <label>
+          <input type="checkbox" formControlName="character_account"/>
+          <span>
+            <p class="label__p-expense">CUENTA</p>
+            <p class="label__p-income">AHORROS</p>
+          </span>
+          <i class='indicator-checkbox-dos'></i>
+        </label>
+      </div>
+      <h2 class="label text-green">+$88.000</h2>
 
-    <div class="button__container margin-top">
-      <button (click)="openCloseDay(false)" class="button__add">
-        <app-svg-button-close-red></app-svg-button-close-red>
-      </button>
-      <button (click)="saveDay()" class="button__add">
-        <app-svg-button-ok></app-svg-button-ok>
-      </button>
-    </div>
+      <div class="button__container margin-top">
+        <button (click)="openCloseDay(false)" class="button__add">
+          <app-svg-button-close-red></app-svg-button-close-red>
+        </button>
+        <button (click)="saveDay()" class="button__add">
+          <app-svg-button-ok></app-svg-button-ok>
+        </button>
+      </div>
+    </form>
+
   </div>
 
 </section>

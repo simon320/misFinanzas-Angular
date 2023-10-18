@@ -1,4 +1,4 @@
-import { Component, Input, OnChanges, OnInit, effect } from '@angular/core';
+import { Component, Input, OnChanges, effect } from '@angular/core';
 import { Router } from '@angular/router';
 
 import { URL } from '../../enums/routes.enum';
@@ -11,7 +11,7 @@ import { WalletService } from 'src/app/services/wallet.service';
   templateUrl: './day-details.component.html',
   styleUrls: ['./day-details.component.scss']
 })
-export class DayDetailsComponent implements OnInit, OnChanges {
+export class DayDetailsComponent implements OnChanges {
   readonly walletSignal = this.walletSignalService.state.asReadonly();
 
   @Input() daySelected!: Date; // FIXME Cambiar el modo de mostrar la fecha por signal.
@@ -28,10 +28,6 @@ export class DayDetailsComponent implements OnInit, OnChanges {
     private walletService: WalletService,
     private walletSignalService: WalletStoreService,
   ) {}
-
-  ngOnInit(): void {
-    // this.getTotalPriceOfMovements();
-  }
 
   ngOnChanges(): void {
     this.getMovementByDay();

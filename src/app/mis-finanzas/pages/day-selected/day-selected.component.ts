@@ -18,10 +18,12 @@ export class DaySelectedComponent implements OnInit, OnDestroy {
 
   selectedDayTitlte!: Date;
   subcription!: Subscription;
+  subcription2!: Subscription;
   movements: Movement[] = [];
   addMovement: boolean = false;
   closeDay: boolean = false;
   movementForm!: FormGroup;
+  closeDayForm!: FormGroup;
   day!: string;
   totalPriceOfMovements: number = 0;
 
@@ -65,7 +67,8 @@ export class DaySelectedComponent implements OnInit, OnDestroy {
     }
   }
 
-  private getTotalPriceOfMovements(): void {
+  private getTotalPriceOfMovements() {
+    this.totalPriceOfMovements = 0;
     this.movements.forEach( movement => {
       if(movement.character === 'expense') 
         this.totalPriceOfMovements -= movement.amount;
@@ -82,13 +85,21 @@ export class DaySelectedComponent implements OnInit, OnDestroy {
     })
   }
 
+  private createCloseDayForm(): void {
+    this.closeDayForm = this.fb.group({
+      character_account: false,
+    })
+  }
+
   public openAddMovement(condition: boolean): void {
     this.addMovement = condition;
+    this.createCloseDayForm();
   }
 
   public openCloseDay(condition: boolean): void {
     this.closeDay = condition;
   }
+
 
   public saveForm(): void {
     if(this.movementForm.invalid) {
@@ -120,6 +131,31 @@ export class DaySelectedComponent implements OnInit, OnDestroy {
           console.log("NO SE PUDO GRABAR EL MOVIMIENTO")
         }
       });
+  }
+
+  public deleteMovement(index: number) {
+    if ( confirm('¿Estas seguro de querer eliminar el movimiento?') ) {
+      const removedMovement: Movement[] = this.movements.splice(index, 1);
+      this.getTotalPriceOfMovements();
+
+
+      let newMovementArray = this.wallet().movement.filter(
+        movement =>  movement.id != removedMovement[0].id
+      )
+
+      const id = localStorage.getItem("id");
+      this.walletService.updateWallet( id!, { movement: newMovementArray })
+        .subscribe({
+          next: _ => {
+            this.walletSignal.setState({ movement: newMovementArray });
+          },
+          error: _ => {
+            console.log("NO SE PUDO GRABAR EL MOVIMIENTO")
+          }
+        });
+    }
+    else 
+      return;
   }
 
   public saveDay(): void {
