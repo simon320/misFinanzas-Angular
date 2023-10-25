@@ -17,8 +17,7 @@ export class DaySelectedComponent implements OnInit, OnDestroy {
   readonly wallet = this.walletSignal.state.asReadonly();
 
   selectedDayTitlte!: Date;
-  subcription!: Subscription;
-  subcription2!: Subscription;
+  subcription: Subscription[] = [];
   movements: Movement[] = [];
   addMovement: boolean = false;
   closeDay: boolean = false;
@@ -26,6 +25,8 @@ export class DaySelectedComponent implements OnInit, OnDestroy {
   closeDayForm!: FormGroup;
   day!: string;
   totalPriceOfMovements: number = 0;
+  character_account: boolean = false;
+  saved_amount: number = 0;
 
   effect = effect(() => {
     this.getMovementByDay();
@@ -45,18 +46,29 @@ export class DaySelectedComponent implements OnInit, OnDestroy {
     this.getDayFormatted()
     this.getMovementByDay();
     this.getTotalPriceOfMovements();
+    this.createCloseDayForm();
+    this.getAccountAmount();
   }
 
   ngOnDestroy(): void {
-    this.subcription.unsubscribe();
+    this.subcription.forEach( subcription => subcription.unsubscribe());
+  }
+
+  private createForm(): void {
+    this.movementForm = this.fb.group({
+      description: ["", Validators.required],
+      amount: [0, Validators.required],
+      character: false,
+    })
   }
 
   private getDayFormatted(): void {
-    this.subcription = this.activitedRoute.url.subscribe(
+    this.subcription.push( this.activitedRoute.url.subscribe(
       date => {
         this.day = date[1].path;
         this.selectedDayTitlte = new Date(this.day);
       })
+    )
   }
 
   private getMovementByDay(): void {
@@ -77,29 +89,33 @@ export class DaySelectedComponent implements OnInit, OnDestroy {
     })
   }
 
-  private createForm(): void {
-    this.movementForm = this.fb.group({
-      description: ["", Validators.required],
-      amount: [0, Validators.required],
-      character: false,
-    })
-  }
-
   private createCloseDayForm(): void {
     this.closeDayForm = this.fb.group({
       character_account: false,
     })
   }
 
+  private getAccountAmount() {
+    this.subcription.push(
+      this.closeDayForm.get('character_account')!.valueChanges.subscribe(
+        value => this.character_account = value
+      )
+    );
+
+    if(this.wallet().money_saved) {
+      this.wallet().money_saved.forEach( save => {
+        this.saved_amount += save.amount;
+      })
+    }
+  }
+
   public openAddMovement(condition: boolean): void {
     this.addMovement = condition;
-    this.createCloseDayForm();
   }
 
   public openCloseDay(condition: boolean): void {
     this.closeDay = condition;
   }
-
 
   public saveForm(): void {
     if(this.movementForm.invalid) {
